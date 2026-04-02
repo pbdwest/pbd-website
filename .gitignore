@@ -31,3 +31,6 @@ npm-debug.log*
 # Archives
 src.zip
 *.zip
+
+# Figma compiled image assets (large binary files, referenced via figma:asset imports)
+src/assets/
