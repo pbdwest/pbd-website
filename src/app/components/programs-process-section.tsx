@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "motion/react";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import applyImage from "figma:asset/7f8e78a0b6f2149e9344f681143d2c8df8e99fbb.png";
 import qualifyImage from "figma:asset/089f3a5b94a579bae9fff7497c84ac1bf812282d.png";
@@ -41,100 +41,107 @@ const steps = [
   },
 ];
 
-export function ProgramsProcessSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
+// ─── Desktop: sticky scroll-driven version ───────────────────────────────────
+function ProcessSectionDesktop() {
+  const outerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Get the active step, defaulting to the first one if none is selected
-  const activeStep = steps[activeIndex >= 0 ? activeIndex : 0];
+  const { scrollYProgress } = useScroll({
+    target: outerRef,
+    offset: ["start start", "end end"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const index = Math.min(
+      steps.length - 1,
+      Math.floor(latest * steps.length)
+    );
+    setActiveIndex(index);
+  });
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-white py-16 md:py-20"
-      style={{ fontFamily: "'Inter', sans-serif" }}
+    // Outer wrapper — tall enough to scroll through all steps
+    <div
+      ref={outerRef}
+      style={{ height: `${steps.length * 100}vh` }}
+      className="relative"
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
-        {/* Section Label */}
-        <p
-          className="text-[#888] uppercase tracking-[0.15em] mb-6"
-          style={{ fontSize: "0.7rem", fontWeight: 500 }}
+      {/* Sticky inner — pins to viewport while user scrolls through outer */}
+      <div className="sticky top-0 h-screen overflow-hidden bg-white flex flex-col justify-center">
+        <div
+          className="max-w-[1440px] mx-auto w-full px-10 lg:px-16"
+          style={{ fontFamily: "'Inter', sans-serif" }}
         >
-          The Process
-        </p>
+          {/* Section label */}
+          <p
+            className="text-[#888] uppercase tracking-[0.15em] mb-6"
+            style={{ fontSize: "0.7rem", fontWeight: 500 }}
+          >
+            The Process
+          </p>
 
-        {/* Top Row: Headline left */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-10 md:mb-14">
-          <motion.h2
-            className="text-[#111642] max-w-[520px]"
+          {/* Headline */}
+          <h2
+            className="text-[#111642] max-w-[520px] mb-10"
             style={{
               fontSize: "clamp(32px, 4vw, 48px)",
               fontWeight: 400,
               lineHeight: 1.1,
               letterSpacing: "-0.03em",
             }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: "easeOut" }}
           >
             From application to earning rebates
-          </motion.h2>
-        </div>
+          </h2>
 
-        {/* Bottom Row: Accordion left + Image right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-          {/* Left Column: Accordion List */}
-          <div className="flex flex-col">
-            {steps.map((step, index) => {
-              const isActive = activeIndex === index;
-              return (
-                <motion.div
-                  key={step.title}
-                  className="border-t border-[#e5e5e5] last:border-b"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.2 + index * 0.08,
-                    ease: "easeOut",
-                  }}
-                >
-                  <button
-                    onClick={() => setActiveIndex(isActive ? -1 : index)}
-                    className="w-full flex items-center gap-3 py-5 text-left cursor-pointer group"
+          {/* Two-column layout */}
+          <div className="grid grid-cols-2 gap-16 items-start">
+            {/* Left: step list */}
+            <div className="flex flex-col">
+              {steps.map((step, index) => {
+                const isActive = activeIndex === index;
+                return (
+                  <div
+                    key={step.title}
+                    className="border-t border-[#e5e5e5] last:border-b"
                   >
-                    <span
-                      className={`w-[6px] h-[6px] shrink-0 transition-colors rounded-[0px] ${
-                        isActive ? "bg-[#ea1528]" : "bg-[#ccc]"
-                      }`}
-                    />
-                    <span
-                      className={`transition-colors ${
-                        isActive ? "text-[#111642]" : "text-[#666]"
-                      } group-hover:text-[#111642]`}
-                      style={{
-                        fontSize: "clamp(0.875rem, 1.2vw, 1rem)",
-                        fontWeight: 400,
-                        letterSpacing: "-0.01em",
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      <span className={`mr-2 ${isActive ? "text-[#111642]" : "text-[#888]"}`}>{step.step}.</span>
-                      {step.title}
-                    </span>
-                  </button>
+                    {/* Step row */}
+                    <div className="flex items-start gap-3 py-5">
+                      <span
+                        className="mt-[7px] w-[6px] h-[6px] shrink-0 rounded-[0px] transition-colors duration-300"
+                        style={{
+                          backgroundColor: isActive ? "#ea1528" : "#ccc",
+                        }}
+                      />
+                      <div className="flex flex-col gap-3 w-full">
+                        {/* Title */}
+                        <span
+                          className="transition-colors duration-300"
+                          style={{
+                            fontSize: "clamp(0.875rem, 1.2vw, 1rem)",
+                            fontWeight: 400,
+                            letterSpacing: "-0.01em",
+                            lineHeight: 1.4,
+                            color: isActive ? "#111642" : "#aaa",
+                          }}
+                        >
+                          <span
+                            className="mr-2 transition-colors duration-300"
+                            style={{ color: isActive ? "#111642" : "#ccc" }}
+                          >
+                            {step.step}.
+                          </span>
+                          {step.title}
+                        </span>
 
-                  <AnimatePresence initial={false}>
-                    {isActive && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pb-5 pl-[18px]">
+                        {/* Description + tags — fade in when active */}
+                        <motion.div
+                          animate={{
+                            opacity: isActive ? 1 : 0,
+                            height: isActive ? "auto" : 0,
+                          }}
+                          transition={{ duration: 0.35, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
                           <p
                             className="text-[#444] mb-4 max-w-[440px]"
                             style={{
@@ -160,41 +167,187 @@ export function ProgramsProcessSection() {
                               </span>
                             ))}
                           </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            })}
-          </div>
+                        </motion.div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
 
-          {/* Right Column: Image */}
-          <motion.div
-            className="relative overflow-hidden rounded-none sticky top-24 self-start aspect-[4/3]"
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="h-full"
+            {/* Right: sticky image frame — frame stays, image crossfades */}
+            <div className="relative overflow-hidden aspect-[4/3]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <ImageWithFallback
+                    src={steps[activeIndex].image}
+                    alt={steps[activeIndex].title}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Mobile: click-driven accordion version (unchanged) ──────────────────────
+function ProcessSectionMobile() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeStep = steps[activeIndex >= 0 ? activeIndex : 0];
+
+  return (
+    <section
+      className="bg-white py-16"
+      style={{ fontFamily: "'Inter', sans-serif" }}
+    >
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+        <p
+          className="text-[#888] uppercase tracking-[0.15em] mb-6"
+          style={{ fontSize: "0.7rem", fontWeight: 500 }}
+        >
+          The Process
+        </p>
+
+        <h2
+          className="text-[#111642] max-w-[520px] mb-10"
+          style={{
+            fontSize: "clamp(32px, 4vw, 48px)",
+            fontWeight: 400,
+            lineHeight: 1.1,
+            letterSpacing: "-0.03em",
+          }}
+        >
+          From application to earning rebates
+        </h2>
+
+        {/* Image */}
+        <div className="relative overflow-hidden aspect-[4/3] mb-8">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="absolute inset-0"
+            >
+              <ImageWithFallback
+                src={activeStep.image}
+                alt={activeStep.title}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Accordion steps */}
+        <div className="flex flex-col">
+          {steps.map((step, index) => {
+            const isActive = activeIndex === index;
+            return (
+              <div
+                key={step.title}
+                className="border-t border-[#e5e5e5] last:border-b"
               >
-                <ImageWithFallback
-                  src={activeStep.image}
-                  alt={activeStep.title}
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
+                <button
+                  onClick={() => setActiveIndex(isActive ? -1 : index)}
+                  className="w-full flex items-center gap-3 py-5 text-left cursor-pointer group"
+                >
+                  <span
+                    className={`w-[6px] h-[6px] shrink-0 transition-colors rounded-[0px] ${
+                      isActive ? "bg-[#ea1528]" : "bg-[#ccc]"
+                    }`}
+                  />
+                  <span
+                    className={`transition-colors ${
+                      isActive ? "text-[#111642]" : "text-[#666]"
+                    } group-hover:text-[#111642]`}
+                    style={{
+                      fontSize: "clamp(0.875rem, 1.2vw, 1rem)",
+                      fontWeight: 400,
+                      letterSpacing: "-0.01em",
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    <span className={`mr-2 ${isActive ? "text-[#111642]" : "text-[#888]"}`}>
+                      {step.step}.
+                    </span>
+                    {step.title}
+                  </span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isActive && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pb-5 pl-[18px]">
+                        <p
+                          className="text-[#444] mb-4 max-w-[440px]"
+                          style={{
+                            fontSize: "16px",
+                            fontWeight: 400,
+                            lineHeight: 1.7,
+                          }}
+                        >
+                          {step.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {step.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="border border-[#d4d4d4] text-[#444] px-3 py-1"
+                              style={{
+                                fontSize: "0.6875rem",
+                                fontWeight: 400,
+                                lineHeight: 1.5,
+                              }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
+  );
+}
+
+// ─── Main export — renders the right version per breakpoint ──────────────────
+export function ProgramsProcessSection() {
+  return (
+    <>
+      {/* Desktop: scroll-driven sticky */}
+      <div className="hidden lg:block">
+        <ProcessSectionDesktop />
+      </div>
+
+      {/* Mobile/tablet: click-driven accordion */}
+      <div className="lg:hidden">
+        <ProcessSectionMobile />
+      </div>
+    </>
   );
 }
