@@ -8,7 +8,7 @@ import { ForRetailersAboutSection } from "../components/for-retailers-about-sect
 import { AboutRoiSection } from "../components/about-roi-section";
 import { CTASection } from "../components/cta-section";
 import { ContactFormSection } from "../components/contact-form-section";
-import { TrustedNumbers } from "../components/trusted-numbers";
+import { TrustedNumbers, aboutStats } from "../components/trusted-numbers";
 
 export default function AboutPage() {
   return (
@@ -17,7 +17,7 @@ export default function AboutPage() {
       <div data-navbar-theme="dark" className="relative">
         <AboutHeroNew />
       </div>
-      <TrustedNumbers />
+      <TrustedNumbers stats={aboutStats} />
       <AboutStorySection />
       <AboutTimelineSection />
       <div data-navbar-theme="dark" className="relative">

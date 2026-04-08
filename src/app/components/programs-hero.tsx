@@ -32,7 +32,7 @@ export function ProgramsHero() {
                 lineHeight: "67.2px",
                 letterSpacing: "-1.92px",
               }}
-            >Retail network built for independent c-stores</h1>
+            >National vendor programs built for independent retailers</h1>
           </motion.div>
 
           {/* Description - right */}
@@ -50,7 +50,7 @@ export function ProgramsHero() {
                 lineHeight: "25.6px",
               }}
             >
-          PBD is a membership-based retail network for independent c-stores, gas stations, and truck stops. Get access to national vendor programs, promotional funding, and rebates            </p>
+              Access tobacco, beverage, general merchandise, coffee, and snack programs with pricing, funding, and support typically reserved for national chains. No fees. No royalties. Just programs that drive performance.</p>
           </motion.div>
         </div>
 

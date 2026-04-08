@@ -4,10 +4,10 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 
 const opportunityBullets = [
-  "Multi-state retail footprint",
-  "Single point of contact",
-  "No store-by-store outreach",
-  "Markets chains don't dominate",
+  "Access to a coordinated retail network",
+  "Improved execution at the store level",
+  "Increased volume and distribution",
+  "Stronger program performance",
 ];
 
 const howItWorksBullets = [
@@ -42,7 +42,7 @@ export function AboutRoiSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-white"
+      className="bg-[#FAFAFA]"
       style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[56px]">
@@ -96,7 +96,7 @@ export function AboutRoiSection() {
                 The Opportunity
               </p>
               <h3 className="text-[#0a0a0a]" style={{ fontSize: "32px", fontWeight: 400, lineHeight: 1.375, letterSpacing: "-0.045em" }}>
-                A market that's hard to reach. Until now.
+                What vendors get through PBD
               </h3>
             </div>
             <BulletList items={opportunityBullets} />

@@ -8,34 +8,34 @@ import earningImage from "figma:asset/0dd055c7d8ac7bc62f274845ec032161e5d5378a.p
 
 const steps = [
   {
-    title: "Apply to join",
+    title: "Apply to Join",
     description:
-      "Submit your application. We review your store's location, size, and product categories to determine fit.",
-    tags: ["Application", "Store review"],
+      "Submit your store information and we review your location, size, and product mix.",
+    tags: ["Application", "Store Review"],
     step: "01",
     image: applyImage,
   },
   {
-    title: "Get qualified",
+    title: "Store Evaluation",
     description:
-      "PBD evaluates whether your store has the volume potential to benefit from national vendor programs. Not every store qualifies — by design.",
-    tags: ["Volume evaluation", "Qualification"],
+      "We identify opportunities across your categories, pricing, and vendor coverage.",
+    tags: ["Category Analysis", "Pricing Review", "Vendor Coverage"],
     step: "02",
     image: qualifyImage,
   },
   {
-    title: "PBD invests in you",
+    title: "Program Setup",
     description:
-      "Qualifying stores enter Jumpstart. PBD invests capital in your store — resetting categories, activating programs, and providing hands-on support.",
-    tags: ["Jumpstart Program", "Capital investment", "Support"],
+      "PBD activates vendor programs, completes resets, and connects your store to qualifying offers.",
+    tags: ["Program Activation", "Category Resets", "Vendor Offers"],
     step: "03",
     image: investImage,
   },
   {
-    title: "Start earning",
+    title: "Start Earning",
     description:
-      "Your store participates in vendor programs and earns monthly rebates. PBD tracks everything and deposits payments directly to you.",
-    tags: ["Monthly rebates", "Direct payment"],
+      "Your store begins generating rebates, improved pricing, and increased performance across key categories.",
+    tags: ["Monthly Rebates", "Improved Pricing", "Performance Tracking"],
     step: "04",
     image: earningImage,
   },
@@ -60,7 +60,7 @@ export function ProgramsProcessSection() {
           className="text-[#888] uppercase tracking-[0.15em] mb-6"
           style={{ fontSize: "0.7rem", fontWeight: 500 }}
         >
-          The Process
+          HOW IT WORKS
         </p>
 
         {/* Top Row: Headline left */}
@@ -77,7 +77,7 @@ export function ProgramsProcessSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            From application to earning rebates
+            Simple, structured, and fully managed.
           </motion.h2>
         </div>
 
