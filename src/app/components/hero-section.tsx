@@ -120,69 +120,68 @@ export function HeroSection() {
         {/* Content Layer - positioned using grid percentages */}
         <div className="absolute left-0 top-[79px] w-full h-[780px]">
           
-          {/* "Vendor Network • Promotions • Programs" text - top center */}
-          <div 
-            className="absolute flex items-center justify-center" 
-            style={{ 
-              left: "49.66%", // 665px / 1339px
-              top: "4.36%", // 34px / 780px
-            }}
-          >
-            <p 
-              className="text-[#fafafa] whitespace-nowrap"
-              style={{ 
-                fontSize: "17.357px",
-                fontWeight: 400,
-                letterSpacing: "-0.8679px",
-                lineHeight: "normal",
-              }}
-            >
-              Vendor Network • Promotions • Programs
-            </p>
-          </div>
-
-          {/* Main headline and CTA - bottom left */}
-          <div 
-            className="absolute flex flex-col gap-[45px]" 
-            style={{ 
-              left: "4.78%", // 64px / 1339px
-              bottom: "17.05%", // 133px / 780px
-              width: "38.54%", // 516px / 1339px
+          {/* Main headline and CTA - vertically centered left */}
+          <div
+            className="absolute flex flex-col gap-[45px]"
+            style={{
+              left: "80px",
+              top: "calc(50% + 111px)",
+              transform: "translateY(-50%)",
+              width: "606px",
             }}
           >
             {/* Eyebrow text */}
-            <p 
-              className="text-[#fafafa]"
-              style={{ 
-                fontSize: "17.357px",
+            <p
+              className="text-white/40"
+              style={{
+                fontSize: "39px",
                 fontWeight: 400,
-                letterSpacing: "-0.8679px",
-                lineHeight: "normal",
+                letterSpacing: "-3.92px",
+                lineHeight: "67.2px",
+                width: "578px",
               }}
             >
               Power Buying Dealers
             </p>
 
-            {/* Main Headline */}
-            <h1 
-              className="text-white"
-              style={{
-                fontSize: "64px",
-                fontWeight: 400,
-                lineHeight: "67.2px",
-                letterSpacing: "-1.92px",
-              }}
-            >
-              Your independent store competing like a chain.
-            </h1>
+            {/* Headline + Subtitle group */}
+            <div className="flex flex-col gap-[8px]">
+              {/* Main Headline */}
+              <h1
+                className="text-white"
+                style={{
+                  fontSize: "56px",
+                  fontWeight: 400,
+                  lineHeight: "67.2px",
+                  letterSpacing: "-3.92px",
+                  width: "606px",
+                }}
+              >
+                A national retail network for independent operators
+              </h1>
+
+              {/* Subtitle */}
+              <p
+                className="text-[#A3A3A3]"
+                style={{
+                  fontSize: "16px",
+                  fontWeight: 400,
+                  lineHeight: "22px",
+                  letterSpacing: "-0.8px",
+                  width: "606px",
+                }}
+              >
+                Helping independent convenience stores, gas stations, and truck stops operate with the programs, funding, and support typically reserved for large chains.
+              </p>
+            </div>
 
             {/* CTA Button */}
             <a
               href="#"
-              className="inline-flex items-center gap-2 bg-white text-[#0a0a0a] px-6 h-[45px] hover:bg-[#EA1528] hover:text-white transition-all justify-center"
-              style={{ fontSize: "14px", fontWeight: 500, width: "199.719px" }}
+              className="inline-flex items-center gap-[22px] bg-white text-[#0a0a0a] px-[24px] py-[12px] hover:bg-[#EA1528] hover:text-white transition-all w-fit"
+              style={{ fontSize: "14px", fontWeight: 500 }}
             >
-              Become A Member
+              Join the Network
               <ArrowRight size={16} />
             </a>
           </div>
@@ -211,9 +210,10 @@ export function HeroSection() {
               left: "60.27%", // 807px / 1339px
               top: "77.18%", // 602px / 780px
               width: "26.51%", // 355px / 1339px
-              fontSize: "14px",
+              fontSize: "16px",
               fontWeight: 400,
-              lineHeight: "22.4px",
+              lineHeight: "22px",
+              letterSpacing: "-0.8px",
             }}
           >
             Giving independent C-store owners the marketing support that national chains rely on, at no cost.
@@ -229,18 +229,28 @@ export function HeroSection() {
       {/* Mobile/tablet view */}
       <div className="lg:hidden relative z-10 px-6 md:px-10 py-20" style={{ paddingTop: "calc(79px + 48px)" }}>
         <div className="flex flex-col gap-8">
-          {/* Main Headline */}
-          <h1 className="text-white text-[36px] md:text-[48px] leading-[1.05] tracking-[-0.03em] font-normal">
-            Your independent store competing like a chain.
-          </h1>
+          {/* Eyebrow */}
+          <p className="text-white/40 text-[24px] md:text-[32px] font-normal" style={{ letterSpacing: "-2px", lineHeight: "1.4" }}>
+            Power Buying Dealers
+          </p>
+
+          {/* Headline + Subtitle */}
+          <div className="flex flex-col gap-2">
+            <h1 className="text-white text-[36px] md:text-[48px] leading-[1.05] tracking-[-0.03em] font-normal">
+              A national retail network for independent operators
+            </h1>
+            <p className="text-[#A3A3A3] text-[14px] md:text-[16px] leading-[22px] font-normal" style={{ letterSpacing: "-0.8px" }}>
+              Helping independent convenience stores, gas stations, and truck stops operate with the programs, funding, and support typically reserved for large chains.
+            </p>
+          </div>
 
           {/* CTA Button */}
           <a
             href="#"
-            className="inline-flex items-center gap-2 bg-white text-[#0a0a0a] px-6 h-[45px] hover:bg-[#EA1528] hover:text-white transition-all w-fit justify-center"
+            className="inline-flex items-center gap-[22px] bg-white text-[#0a0a0a] px-[24px] py-[12px] hover:bg-[#EA1528] hover:text-white transition-all w-fit"
             style={{ fontSize: "14px", fontWeight: 500 }}
           >
-            Become A Member
+            Join the Network
             <ArrowRight size={16} />
           </a>
 
@@ -253,7 +263,7 @@ export function HeroSection() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <p className="text-[#d4d4d4] text-[14px] leading-[22.4px] font-normal">
+            <p className="text-[#d4d4d4] text-[16px] leading-[22px] font-normal" style={{ letterSpacing: "-0.8px" }}>
               Giving independent C-store owners the marketing support that national chains rely on, at no cost.
             </p>
           </div>

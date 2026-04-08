@@ -75,7 +75,7 @@ export function AboutRoiSection() {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
-              Independent convenience stores are fragmented and hard to reach at scale. PBD West changes that — organizing hundreds of stores into one accountable network so your programs get placed, tracked, and executed.
+              Manufacturers and distributors looking to grow distribution, improve execution, and reach independent retailers at scale.
             </motion.p>
           </div>
         </div>
@@ -157,7 +157,7 @@ export function AboutRoiSection() {
             className="inline-flex items-center gap-3 border border-[#EA1528] text-[#EA1528] px-[25px] py-[13px] hover:bg-[#EA1528] hover:text-white transition-all group"
             style={{ fontSize: "14px", fontWeight: 500 }}
           >
-            Learn More
+            Partner with PBD
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

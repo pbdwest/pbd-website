@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 
 const stats = [
-  { number: 30, label: "Years serving independent" },
-  { number: 50, label: "Members across USS" },
-  { number: 12, label: "States" },
+  { number: 32, label: "Years Supporting Independent Retailers" },
+  { number: 400, label: "Stores in the PBD Network" },
+  { number: 24, label: "States and Growing" },
 ];
 
 function useCountUp(target: number, isInView: boolean, duration = 1.5) {

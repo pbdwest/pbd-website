@@ -24,24 +24,24 @@ export default function HomePage() {
         <HeroSection />
       </div>
       <TrustedNumbers />
-      <AboutSection />
+      {/* <AboutSection /> */}
       <LogoCloudSection />
       {/* <ServicesSection /> */}
       <ProgramsPreviewSection />
-      <div data-navbar-theme="dark">
-        <CalculatorCTASection />
-      </div>
       <HowItWorksSection />
       <WhyChooseSection />
       <ResultsSection />
       <div data-navbar-theme="dark">
-        <ProvenPerformanceSection />
+        <CalculatorCTASection />
       </div>
       <div data-navbar-theme="dark">
-        <CTASection />
+        <ProvenPerformanceSection />
       </div>
       <TestimonialsSection />
       <FAQSection />
+      <div data-navbar-theme="dark">
+        <CTASection />
+      </div>
       <ContactFormSection />
       <div data-navbar-theme="dark">
         <FooterSection />

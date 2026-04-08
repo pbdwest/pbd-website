@@ -10,27 +10,27 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const results = [
   {
-    title: "More Vendor Rebates",
+    title: "Increased Vendor Rebates",
     description:
-      "Access to national vendor programs independent stores previously could not access.",
+      "Access to national programs generates consistent monthly rebate income",
     image: imgCultivation,
   },
   {
-    title: "Stronger Category Sales",
+    title: "Stronger Category Performance",
     description:
-      "Merchandising support and vendor programs increase performance in key categories.",
+      "Optimized product mix and execution drive higher sales across key categories",
     image: imgProductRollout,
   },
   {
-    title: "Professional Merchandising",
+    title: "Improved In-Store Execution",
     description:
-      "Planograms, resets, and vendor programs improve in-store execution.",
+      "Resets, signage, and merchandising elevate store presentation and performance",
     image: imgMarketingGrowth,
   },
   {
     title: "Simplified Program Management",
     description:
-      "PBD manages vendor relationships, program compliance, and rebate tracking.",
+      "PBD manages vendor programs, compliance, and rebate tracking end-to-end",
     image: imgGuidedManagement,
   },
 ];
@@ -53,7 +53,7 @@ export function ResultsSection() {
             className="text-[#999] uppercase tracking-[0.15em]"
             style={{ fontSize: "11.2px", fontWeight: 500 }}
           >
-            Results
+            Measured Results. Not Promises.
           </p>
           <motion.h2
             className="text-[#0a0a0a] max-w-[700px]"
@@ -67,7 +67,7 @@ export function ResultsSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            Results retailers see
+            Real Results at the Store Level
           </motion.h2>
           <motion.p
             className="text-[#555] max-w-[700px]"
@@ -76,9 +76,7 @@ export function ResultsSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
           >
-            Independent retailers on the PBD network see measurable improvements
-            across vendor rebates, category performance, in-store execution, and
-            program management.
+            Independent retailers in the PBD network see measurable improvements across rebates, category performance, and in-store execution.
           </motion.p>
         </div>
 
@@ -143,7 +141,7 @@ export function ResultsSection() {
             className="group inline-flex items-center gap-3 border border-[#EA1528] text-[#EA1528] px-[25px] py-[13px] hover:bg-[#EA1528] hover:text-white transition-all"
             style={{ fontSize: "14px", fontWeight: 500 }}
           >
-            See the impact
+            See How PBD Drives Results
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

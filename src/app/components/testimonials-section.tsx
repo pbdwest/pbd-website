@@ -6,42 +6,42 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 const testimonials = [
   {
     quote:
-      "The difference in my business is night and day since joining PBD West. I wish I had joined sooner.",
-    name: "Shawn D.",
-    role: "C-Store Owner",
-    location: "Las Vegas, NV",
+      "We went from almost no rebates to a real monthly revenue stream. PBD gave us access to programs we couldn't get on our own.",
+    name: "Marcus T.",
+    role: "Quick Fill Express · Owner",
+    location: "Houston, TX",
     avatar: "https://images.unsplash.com/photo-1590496552566-41aca09db352?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBtYWxlJTIwYnVzaW5lc3MlMjBvd25lciUyMHBvcnRyYWl0fGVufDF8fHx8MTc3MzIxOTQyOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
     quote:
-      "PBD gave us access to vendor programs we never knew existed. Our rebate income went from almost nothing to a real revenue stream.",
-    name: "Maria G.",
-    role: "Fuel & Go Operator",
-    location: "Houston, TX",
+      "They didn't just connect us to programs, they came in and helped set everything up. The difference in our store is noticeable.",
+    name: "Linda R.",
+    role: "Sunrise Fuel & Mart · Owner",
+    location: "Phoenix, AZ",
     avatar: "https://images.unsplash.com/photo-1762341124956-d2650d5d1f9e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMHN0b3JlJTIwb3duZXIlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NzMyMTk0MzB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
     quote:
-      "Their team walked our store, reorganized key sections, and within a quarter we saw a noticeable lift in basket size.",
+      "The rebates alone made a difference, but the bigger impact was how much cleaner and more organized our store became.",
     name: "James P.",
-    role: "Quick Stop Owner",
+    role: "Corner Stop C-Store · Owner",
     location: "Bakersfield, CA",
     avatar: "https://images.unsplash.com/photo-1622169804256-0eb6873ff441?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBtYWxlJTIwc3RvcmUlMjBtYW5hZ2VyJTIwaGVhZHNob3R8ZW58MXx8fHwxNzczMjE5NDMwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
     quote:
-      "No fees, no royalties — the vendor relationships they bring are something an independent store simply can't get on their own.",
+      "We always felt like we were behind the chains. Now we're running the same programs and competing at that level.",
     name: "Priya K.",
-    role: "Convenience Store Owner",
+    role: "Valley Road Convenience · Owner",
     location: "Sacramento, CA",
     avatar: "https://images.unsplash.com/photo-1705164454513-d8274719fdf5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBpbmRpYW4lMjB3b21hbiUyMGJ1c2luZXNzJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzczMjE5NDMxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
   {
     quote:
-      "The on-site consulting alone is worth it. PBD helped us unlock programs we didn't even know we qualified for.",
+      "PBD made it easy. They handled the programs, and we started seeing results.",
     name: "David R.",
-    role: "Parkway Fuel & Mart",
-    location: "Phoenix, AZ",
+    role: "Parkway Fuel & Mart · Owner",
+    location: "Las Vegas, NV",
     avatar: "https://images.unsplash.com/photo-1758599543154-76ec1c4257df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBtYWxlJTIwZW50cmVwcmVuZXVyJTIwaGVhZHNob3R8ZW58MXx8fHwxNzczMjE5NDMxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   },
 ];

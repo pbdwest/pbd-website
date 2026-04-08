@@ -35,7 +35,7 @@ export function AboutHeroNew() {
                 letterSpacing: "-1.92px",
               }}
             >
-              Built for<br />Independent Retailers
+              Built for independent retailers, by independent retailers.
             </h1>
           </motion.div>
 
@@ -54,7 +54,7 @@ export function AboutHeroNew() {
                 lineHeight: "25.6px",
               }}
             >
-              Power Buying Dealers (PBD) gives independent c-store owners the same vendor programs, promotional funding, and buying power that national chains rely on
+              PBD is a retail network that connects independent convenience stores, gas stations, and truck stops to vendor programs, funding, and support typically reserved for larger chains.
             </p>
           </motion.div>
         </div>
@@ -70,61 +70,16 @@ export function AboutHeroNew() {
           >
             <p
               className="text-[#1e1e1e]"
-              style={{
-                fontSize: "14.4px",
-                fontWeight: 400,
-                lineHeight: "21.6px",
-              }}
+              style={{ fontSize: "14.4px", fontWeight: 400, lineHeight: "21.6px" }}
             >
-              PBD organizes independent stores into a network that gives vendors a reason to invest in your store with the same programs they run through national chains.
+              PBD organizes independent retailers into a network that gives vendors a reason to invest in your store with the same programs they run through national chains.
             </p>
-
-            <div className="flex flex-col gap-[12px]">
-              {/* Bullet 1 */}
-              <div className="flex gap-[12px] items-start">
-                <div className="shrink-0 w-[6px] h-[6px] bg-[#ea1528] mt-[7px]" />
-                <p
-                  className="text-black"
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: 400,
-                    lineHeight: "18.6px",
-                  }}
-                >
-                  Access vendor rebates and promotional funding
-                </p>
-              </div>
-
-              {/* Bullet 2 */}
-              <div className="flex gap-[12px] items-start">
-                <div className="shrink-0 w-[6px] h-[6px] bg-[#ea1528] mt-[7px]" />
-                <p
-                  className="text-black"
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: 400,
-                    lineHeight: "18.6px",
-                  }}
-                >
-                  Get merchandising and category support
-                </p>
-              </div>
-
-              {/* Bullet 3 */}
-              <div className="flex gap-[12px] items-center">
-                <div className="shrink-0 w-[6px] h-[6px] bg-[#ea1528]" />
-                <p
-                  className="text-black whitespace-nowrap"
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: 400,
-                    lineHeight: "21.6px",
-                  }}
-                >
-                  Pay zero fees — ever
-                </p>
-              </div>
-            </div>
+            <p
+              className="text-[#1e1e1e]"
+              style={{ fontSize: "14.4px", fontWeight: 400, lineHeight: "21.6px" }}
+            >
+              Most independent stores don't have access to these programs on their own. PBD bridges that gap by connecting stores to vendor funding, category programs, and execution support that drive real results at the store level.
+            </p>
           </motion.div>
 
           {/* Card 2: Center Image - visible from start */}

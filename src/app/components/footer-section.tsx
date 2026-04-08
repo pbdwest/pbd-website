@@ -134,7 +134,7 @@ export function FooterSection() {
             className="font-normal text-white whitespace-nowrap"
             style={{ fontSize: "12px", lineHeight: "18px" }}
           >
-            © 2026 PBD West. All rights reserved.
+            © 2026 Power Buying Dealers. All rights reserved.
           </p>
         </div>
 

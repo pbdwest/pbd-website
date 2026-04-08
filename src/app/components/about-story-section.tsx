@@ -3,13 +3,13 @@ import { motion, useScroll, useTransform } from "motion/react";
 
 // Split story into lines — each line highlights as a unit on scroll
 const storyLines = [
-  "Our family has been running gas stations",
-  "and convenience stores since the early 1970s.",
+  "Our family has been operating convenience stores",
+  "and gas stations since the early 1970s.",
   "We saw firsthand how national chains had access",
-  "to vendor programs, promotional funding, and support",
-  "that independent operators simply couldn't reach.",
-  "PBD was created to close that gap —",
-  "built by retailers, not consultants.",
+  "to programs independent operators simply couldn't get.",
+  "PBD was built to close that gap —",
+  "giving independents access to the same programs,",
+  "funding, and execution as the national chains.",
 ];
 
 export function AboutStorySection() {

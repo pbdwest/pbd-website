@@ -8,31 +8,31 @@ import img3 from "figma:asset/8b03b253c3e6772fb6e91cf651581cf741bbdc80.png";
 
 const reasons = [
   {
-    title: "Consulting from real operators",
+    title: "Built on Real Experience",
     description:
-      "One-on-one consulting from people who've run stores. Our team understands your day-to-day because they've lived it — practical advice, not theory.",
-    tags: ["1-on-1 consulting", "Operator-led", "In-store visits"],
+      "50+ years operating convenience stores and fuel retail locations.",
+    tags: ["50+ Years Experience", "C-Store Operators", "Fuel Retail"],
     image: imgConsulting,
   },
   {
-    title: "Unmatched vendor relationships",
+    title: "Execution, Not Just Access",
     description:
-      "30+ years of vendor relationships — chains can't match. Access national rebate programs and promotional funding typically reserved for large retailers.",
-    tags: ["30+ years", "National programs", "Vendor access"],
+      "Programs are implemented, managed, and verified at the store level.",
+    tags: ["Store-Level Execution", "Program Management", "Verified Results"],
     image: img1,
   },
   {
-    title: "Results you can measure",
+    title: "No Membership Fees or Royalties",
     description:
-      "Every program tied to a measurable result. From rebate tracking to category performance, you'll see exactly how PBD impacts your bottom line.",
-    tags: ["Measurable ROI", "Performance tracking", "Data-driven"],
+      "No cost to join or participate in the network.",
+    tags: ["No Fees", "No Royalties", "Free to Join"],
     image: img2,
   },
   {
-    title: "Built-in vendor support",
+    title: "Real Vendor Relationships",
     description:
-      "Built-in vendor support through PBD's relationships. We handle merchandising, program compliance, and promotional execution so you can focus on your store.",
-    tags: ["Merchandising", "Compliance", "Vendor management"],
+      "National programs built through decades of direct vendor collaboration.",
+    tags: ["National Programs", "Direct Vendor Access", "Decades of Relationships"],
     image: img3,
   },
 ];

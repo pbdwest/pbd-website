@@ -1,35 +1,30 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import step1Image from "figma:asset/d53d8c98d92bf4951a4fe6b032e083859b247ad5.png";
 import step2Image from "figma:asset/f854561c8f7679840783f5d293116468ec50da59.png";
 import step3Image from "figma:asset/0f505cce767ac3a8236f5ac06db5845284724c64.png";
-import step4Image from "figma:asset/4fae2e2c85a6d15f382dbd189b9c54bb6a55d10f.png";
 
 const steps = [
   {
-    title: "Apply for Membership",
+    title: "Join the Network",
     description:
-      "Independent gas stations, convenience stores, and truck stops apply to join the PBD network.",
+      "Apply and get qualified based on your store, location, and categories",
     image: step1Image,
   },
   {
-    title: "Complete the Jumpstart Program",
+    title: "Program Setup & Implementation",
     description:
-      "PBD performs a store review, resets key categories, and activates vendor programs and funding.",
+      "PBD activates vendor programs, resets key categories, and installs merchandising and signage",
     image: step2Image,
   },
   {
-    title: "Activate Vendor Programs",
+    title: "Start Earning & Growing",
     description:
-      "Your store is connected to PBD National vendor programs to enable on-invoice discounts, promotional funding, and merchandising support.",
+      "Receive monthly rebates while PBD manages programs, performance, and execution",
     image: step3Image,
-  },
-  {
-    title: "Earn Rebates & Grow Sales",
-    description:
-      "Stores receive vendor rebates and promotional funding while PBD continues to support merchandising, pricing, and program execution.",
-    image: step4Image,
   },
 ];
 
@@ -81,7 +76,7 @@ export function HowItWorksSection() {
               className="text-[#999] uppercase tracking-[0.15em]"
               style={{ fontSize: "11.2px", fontWeight: 500 }}
             >
-              Our Process
+              How it Works
             </p>
             <motion.h2
               className="text-[#0a0a0a] max-w-[700px]"
@@ -213,6 +208,22 @@ export function HowItWorksSection() {
             </div>
 
           </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          >
+            <Link
+              to="/how-it-works"
+              className="group inline-flex items-center gap-4 border border-[#EA1528] text-[#EA1528] px-[25px] py-[13px] hover:bg-[#EA1528] hover:text-white transition-all"
+              style={{ fontSize: "14px", fontWeight: 500 }}
+            >
+              See How It Works
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
         </div>
       </div>
 

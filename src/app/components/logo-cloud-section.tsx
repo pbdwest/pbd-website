@@ -26,7 +26,7 @@ export function LogoCloudSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          Trusted Brands Trust Us
+          Trusted by Leading Brands
         </motion.p>
 
         {/* Logo slider */}
