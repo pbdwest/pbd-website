@@ -203,7 +203,7 @@ export default function ContactPage() {
             </motion.div>
           ) : (
             <motion.div
-              className="w-full max-w-[520px]"
+              className="w-full"
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}

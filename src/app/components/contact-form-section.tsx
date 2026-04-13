@@ -21,9 +21,13 @@ export function ContactFormSection() {
     fuelBrand: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+
+  const selectBg = `url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23999' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`;
+  const selectClass = "w-full bg-white border border-[#E0E0E0] rounded-[8px] px-4 py-3 text-[#0a0a0a] outline-none focus:border-[#111642] transition-colors appearance-none cursor-pointer";
+  const selectStyle: React.CSSProperties = { fontSize: "14px", fontWeight: 400, backgroundImage: selectBg, backgroundRepeat: "no-repeat", backgroundPosition: "right 16px center" };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,7 +148,8 @@ export function ContactFormSection() {
                     <label htmlFor="contact" className="text-[#0a0a0a]" style={labelStyle}>Contact</label>
                     <input
                       type="tel" id="contact" name="contact" value={form.contact}
-                      onChange={handleChange} placeholder="(000) 000-0000" required autoComplete="tel"
+                      onChange={(e) => { const v = e.target.value.replace(/\D/g, ""); if (v.length <= 10) setForm({ ...form, contact: v }); }}
+                      placeholder="(000) 000-0000" required autoComplete="tel" maxLength={10} pattern="\d{10}"
                       className={inputClass} style={inputStyle}
                     />
                   </div>
@@ -162,11 +167,10 @@ export function ContactFormSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-2">
                     <label htmlFor="noOfStores" className="text-[#0a0a0a]" style={labelStyle}>No. of Stores</label>
-                    <input
-                      type="text" id="noOfStores" name="noOfStores" value={form.noOfStores}
-                      onChange={handleChange} placeholder="" autoComplete="off"
-                      className={inputClass} style={inputStyle}
-                    />
+                    <select id="noOfStores" name="noOfStores" value={form.noOfStores} onChange={handleChange} required className={selectClass} style={selectStyle}>
+                      <option value="" disabled>Select</option>
+                      {["1", "2–5", "6–10", "11–25", "25+"].map((o) => <option key={o} value={o}>{o}</option>)}
+                    </select>
                   </div>
                   <div className="flex flex-col gap-2">
                     <label htmlFor="primaryDistributor" className="text-[#0a0a0a]" style={labelStyle}>Primary Distributor</label>
@@ -182,19 +186,17 @@ export function ContactFormSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-2">
                     <label htmlFor="storeSalesArea" className="text-[#0a0a0a]" style={labelStyle}>Store Sales Area</label>
-                    <input
-                      type="text" id="storeSalesArea" name="storeSalesArea" value={form.storeSalesArea}
-                      onChange={handleChange} placeholder="" autoComplete="off"
-                      className={inputClass} style={inputStyle}
-                    />
+                    <select id="storeSalesArea" name="storeSalesArea" value={form.storeSalesArea} onChange={handleChange} required className={selectClass} style={selectStyle}>
+                      <option value="" disabled>Select</option>
+                      {["Under 1,500 sq ft", "1,500–3,000 sq ft", "3,000–5,000 sq ft", "Over 5,000 sq ft"].map((o) => <option key={o} value={o}>{o}</option>)}
+                    </select>
                   </div>
                   <div className="flex flex-col gap-2">
                     <label htmlFor="fuelBrand" className="text-[#0a0a0a]" style={labelStyle}>Fuel Brand / Unbranded</label>
-                    <input
-                      type="text" id="fuelBrand" name="fuelBrand" value={form.fuelBrand}
-                      onChange={handleChange} placeholder="" autoComplete="off"
-                      className={inputClass} style={inputStyle}
-                    />
+                    <select id="fuelBrand" name="fuelBrand" value={form.fuelBrand} onChange={handleChange} required className={selectClass} style={selectStyle}>
+                      <option value="" disabled>Select</option>
+                      {["Branded", "Unbranded", "No Fuel"].map((o) => <option key={o} value={o}>{o}</option>)}
+                    </select>
                   </div>
                 </div>
 

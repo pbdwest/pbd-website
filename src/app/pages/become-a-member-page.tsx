@@ -154,7 +154,7 @@ function MemberHeroForm() {
           </motion.div>
         ) : (
           <motion.div
-            className="w-full max-w-[520px]"
+            className="w-full"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
@@ -168,52 +168,56 @@ function MemberHeroForm() {
               <p className="text-[#0a0a0a]" style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "-0.13px" }}>
                 Contact Information
               </p>
-              <Field label="Full Name">
-                <input type="text" id="name" name="name" value={form.name} onChange={handleChange}
-                  placeholder="Full name" required autoComplete="name" className={inputCls} style={inputSty} />
-              </Field>
-              <Field label="Phone Number">
-                <input type="tel" id="contact" name="contact" value={form.contact} onChange={handleChange}
-                  placeholder="(000) 000-0000" required autoComplete="tel" className={inputCls} style={inputSty} />
-              </Field>
-              <Field label="Email Address">
-                <input type="email" id="email" name="email" value={form.email} onChange={handleChange}
-                  placeholder="you@example.com" required autoComplete="email" className={inputCls} style={inputSty} />
-              </Field>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <Field label="Full Name">
+                  <input type="text" id="name" name="name" value={form.name} onChange={handleChange}
+                    placeholder="Full name" required autoComplete="name" className={inputCls} style={inputSty} />
+                </Field>
+                <Field label="Phone Number">
+                  <input type="tel" id="contact" name="contact" value={form.contact} onChange={handleChange}
+                    placeholder="(000) 000-0000" required autoComplete="tel" className={inputCls} style={inputSty} />
+                </Field>
+                <Field label="Email Address">
+                  <input type="email" id="email" name="email" value={form.email} onChange={handleChange}
+                    placeholder="you@example.com" required autoComplete="email" className={inputCls} style={inputSty} />
+                </Field>
+              </div>
 
               {/* Store Information */}
               <p className="text-[#0a0a0a] mt-2" style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "-0.13px" }}>
                 Store Information
               </p>
-              <Field label="Number of Stores">
-                <select id="noOfStores" name="noOfStores" value={form.noOfStores} onChange={handleChange}
-                  required className={selectCls} style={selectSty}>
-                  <option value="" disabled>Select</option>
-                  {storeCountOptions.map((o) => <option key={o} value={o}>{o}</option>)}
-                </select>
-              </Field>
-              <Field label="Store Location (City, State)">
-                <input type="text" id="storeLocation" name="storeLocation" value={form.storeLocation} onChange={handleChange}
-                  placeholder="City, State" required autoComplete="address-level2" className={inputCls} style={inputSty} />
-              </Field>
-              <Field label="Primary Distributor">
-                <input type="text" id="primaryDistributor" name="primaryDistributor" value={form.primaryDistributor} onChange={handleChange}
-                  placeholder="e.g. Core-Mark, McLane" required autoComplete="off" className={inputCls} style={inputSty} />
-              </Field>
-              <Field label="Fuel Brand (optional)">
-                <select id="fuelBrand" name="fuelBrand" value={form.fuelBrand} onChange={handleChange}
-                  className={selectCls} style={selectSty}>
-                  <option value="">Select</option>
-                  {fuelOptions.map((o) => <option key={o} value={o}>{o}</option>)}
-                </select>
-              </Field>
-              <Field label="Approx. Store Size (Sq Ft) (optional)">
-                <select id="storeSalesArea" name="storeSalesArea" value={form.storeSalesArea} onChange={handleChange}
-                  className={selectCls} style={selectSty}>
-                  <option value="">Select</option>
-                  {salesAreaOptions.map((o) => <option key={o} value={o}>{o}</option>)}
-                </select>
-              </Field>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <Field label="Number of Stores">
+                  <select id="noOfStores" name="noOfStores" value={form.noOfStores} onChange={handleChange}
+                    required className={selectCls} style={selectSty}>
+                    <option value="" disabled>Select</option>
+                    {storeCountOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+                  </select>
+                </Field>
+                <Field label="Store Location (City, State)">
+                  <input type="text" id="storeLocation" name="storeLocation" value={form.storeLocation} onChange={handleChange}
+                    placeholder="City, State" required autoComplete="address-level2" className={inputCls} style={inputSty} />
+                </Field>
+                <Field label="Primary Distributor">
+                  <input type="text" id="primaryDistributor" name="primaryDistributor" value={form.primaryDistributor} onChange={handleChange}
+                    placeholder="e.g. Core-Mark, McLane" required autoComplete="off" className={inputCls} style={inputSty} />
+                </Field>
+                <Field label="Fuel Brand (optional)">
+                  <select id="fuelBrand" name="fuelBrand" value={form.fuelBrand} onChange={handleChange}
+                    className={selectCls} style={selectSty}>
+                    <option value="">Select</option>
+                    {fuelOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+                  </select>
+                </Field>
+                <Field label="Approx. Store Size (Sq Ft) (optional)">
+                  <select id="storeSalesArea" name="storeSalesArea" value={form.storeSalesArea} onChange={handleChange}
+                    className={selectCls} style={selectSty}>
+                    <option value="">Select</option>
+                    {salesAreaOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+                  </select>
+                </Field>
+              </div>
 
               <div className="flex flex-col gap-[12px] mt-2">
                 <button
