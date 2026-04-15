@@ -45,7 +45,7 @@ jobs:
 
 
 
-          if [ "${{ github.ref_name }}" == "main" || "${{ github.ref_name }}" == "Ui-fixes" ]; then
+          if [ "${{ github.ref_name }}" == "Ui-fixes" ]; then
             BUCKET="pbd-marketing-prod-frontend"
             DISTRIBUTION_ID="${{ secrets.PROD_CLOUDFRONT_ID }}"
           elif [ "${{ github.ref_name }}" == "Ui-fixes" ]; then
