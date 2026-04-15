@@ -12,7 +12,7 @@ export function AboutHeroNew() {
     <section
       ref={sectionRef}
       className="relative bg-[#111642] overflow-hidden"
-      style={{ fontFamily: "'Inter', sans-serif", paddingTop: "79px" }}
+      style={{ fontFamily: "'Inter', sans-serif", paddingTop: "79px"}}
       data-navbar-theme="dark"
     >
       {/* Hero Content */}

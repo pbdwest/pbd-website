@@ -170,8 +170,8 @@ export function CoreProgramsSection() {
           {programs.map(({ color, Icon, name, description, fullWidth }) => (
             <div
               key={name}
-              className="flex gap-5 items-start"
-              style={{ width: fullWidth ? "100%" : "clamp(280px, 30%, 401px)" }}
+              className="flex gap-5 items-center"
+              style={{ width : "clamp(280px, 30%, 401px)" }}
             >
               {/* Icon square */}
               <div className="relative flex-shrink-0 size-[68px]" style={{ backgroundColor: color }}>
@@ -181,13 +181,13 @@ export function CoreProgramsSection() {
               <div className="flex flex-col gap-[6px] flex-1">
                 <p
                   className="text-[#111642]"
-                  style={{ fontSize: "20px", fontWeight: 600, letterSpacing: "-0.18px" }}
+                  style={{ fontSize: "19px", fontWeight: 600, letterSpacing: "-0.18px" }}
                 >
                   {name}
                 </p>
                 <p
                   className="text-[#737373]"
-                  style={{ fontSize: "15px", fontWeight: 400, letterSpacing: "-0.18px" }}
+                  style={{ fontSize: "14px", fontWeight: 400, letterSpacing: "-0.18px" }}
                 >
                   {description}
                 </p>

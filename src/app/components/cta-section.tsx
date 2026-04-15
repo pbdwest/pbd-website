@@ -63,7 +63,7 @@ export function CTASection() {
           transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
         >
           <Link
-            to="/become-a-member"
+            to="/join"
             className="inline-flex items-center gap-3 bg-white text-[#0a0a0a] px-[25px] py-[13px] hover:bg-[#EA1528] hover:text-white transition-all group"
             style={{ fontSize: "14px", fontWeight: 500 }}
           >

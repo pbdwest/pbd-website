@@ -5,7 +5,6 @@ import { Link } from "react-router";
 import svgPaths from "../../imports/svg-b99e162ar8";
 
 const navLinks = [
-  { label: "About Us", href: "/about" },
   {
     label: "Programs",
     href: "#",
@@ -22,28 +21,30 @@ const navLinks = [
 function PBDLogo() {
   const fill = "white";
   return (
-    <div className="relative w-[103px] h-[24px]">
-      <svg
-        className="absolute block size-full"
-        fill="none"
-        preserveAspectRatio="none"
-        viewBox="0 0 103 24"
-      >
-        {/* Icon mark (lightning bolt circles) */}
-        <g>
-          <path d={svgPaths.p1a7f9d70} fill={fill} transform="translate(7.27, 3.12) scale(1)" />
-          <path d={svgPaths.p206b5100} fill={fill} transform="translate(0, 2.24) scale(1)" />
-          <path d={svgPaths.p31a7dc40} fill={fill} transform="translate(2.92, 12.32) scale(1)" />
-          <path d={svgPaths.p36279c00} fill={fill} transform="translate(5.43, 0) scale(1)" />
-        </g>
-        {/* Wordmark: PBD */}
-        <g>
-          <path d={svgPaths.p1e1ad500} fill={fill} transform="translate(23.22, 2.56) scale(1)" />
-          <path d={svgPaths.p23f1f180} fill={fill} transform="translate(50.02, 2.64) scale(1)" />
-          <path d={svgPaths.p3d46780} fill={fill} transform="translate(76.99, 2.64) scale(1)" />
-        </g>
-      </svg>
-    </div>
+    <Link to="/" className="relative z-10 flex items-center shrink-0" aria-label="Go to homepage">
+      <div className="relative w-[103px] h-[24px]">
+        <svg
+          className="absolute block size-full"
+          fill="none"
+          preserveAspectRatio="none"
+          viewBox="0 0 103 24"
+        >
+          {/* Icon mark (lightning bolt circles) */}
+          <g>
+            <path d={svgPaths.p1a7f9d70} fill={fill} transform="translate(7.27, 3.12) scale(1)" />
+            <path d={svgPaths.p206b5100} fill={fill} transform="translate(0, 2.24) scale(1)" />
+            <path d={svgPaths.p31a7dc40} fill={fill} transform="translate(2.92, 12.32) scale(1)" />
+            <path d={svgPaths.p36279c00} fill={fill} transform="translate(5.43, 0) scale(1)" />
+          </g>
+          {/* Wordmark: PBD */}
+          <g>
+            <path d={svgPaths.p1e1ad500} fill={fill} transform="translate(23.22, 2.56) scale(1)" />
+            <path d={svgPaths.p23f1f180} fill={fill} transform="translate(50.02, 2.64) scale(1)" />
+            <path d={svgPaths.p3d46780} fill={fill} transform="translate(76.99, 2.64) scale(1)" />
+          </g>
+        </svg>
+      </div>
+    </Link>
   );
 }
 
@@ -96,9 +97,7 @@ export function DarkNavbar({ activePage }: DarkNavbarProps) {
         <div className="absolute inset-0 border-b border-[#292d55] pointer-events-none transition-colors duration-300" />
 
         {/* Logo */}
-        <Link to="/" className="relative z-10 flex items-center shrink-0">
-          <PBDLogo />
-        </Link>
+        <PBDLogo />
 
         {/* Desktop Nav Links */}
         <div className="hidden lg:flex items-center gap-[32px] relative z-10">

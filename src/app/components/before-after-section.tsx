@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
+import imgImage1770 from "../../assets/ServicesSection.png";
+import imgPicture21 from "../../assets/arrow-blue.png";
+import imgFrame from "../../assets/ServicesSection2.png";
 
-const imgImage1770 = "https://www.figma.com/api/mcp/asset/65b7e44c-f729-4e61-bb52-500c74705059";
-const imgPicture21 = "https://www.figma.com/api/mcp/asset/d974523d-2e36-4cfa-94d5-3a040bcdce7d";
-const imgFrame     = "https://www.figma.com/api/mcp/asset/e1a4c622-3eef-4cd4-a6bd-f1b30de963fc";
 
 export function BeforeAfterSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -13,9 +13,9 @@ export function BeforeAfterSection() {
     <section
       ref={sectionRef}
       className="bg-[#fafafa]"
-      style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
+      style={{ fontFamily: "'Inter', sans-serif" }}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[56px] items-center">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] py-14 md:py-20 flex flex-col gap-10 md:gap-[56px] items-center">
 
         {/* Header */}
         <div className="flex flex-col gap-6 w-full">
@@ -46,7 +46,7 @@ export function BeforeAfterSection() {
         </div>
 
         {/* Before / Arrow / After */}
-        <div className="flex gap-6 items-center w-full" style={{ height: "519px" }}>
+        <div className="flex flex-col md:flex-row gap-6 md:items-center w-full">
 
           {/* ── Before column ── */}
           <motion.div
@@ -56,7 +56,7 @@ export function BeforeAfterSection() {
             transition={{ duration: 0.65, ease: "easeOut" }}
           >
             {/* Image — fills available height */}
-            <div className="flex-1 min-h-0 relative overflow-hidden">
+            <div className="relative overflow-hidden h-[240px] sm:h-[300px] md:h-[360px] lg:h-[390px] xl:h-[420px]">
               <img
                 alt="Before — disorganized store"
                 className="absolute inset-0 w-full h-full object-cover pointer-events-none"
@@ -71,7 +71,7 @@ export function BeforeAfterSection() {
                 className="flex items-center justify-center px-3 py-2 border border-[#d4d4d4] w-fit"
                 style={{ background: "#e5e5e5" }}
               >
-                <p style={{ fontSize: "16px", fontWeight: 400, lineHeight: "16.5px", color: "#000", whiteSpace: "nowrap" }}>
+                <p style={{ fontSize: "16px", fontWeight: 400, lineHeight: "16.5px", color: "#000" }}>
                   Before
                 </p>
               </div>
@@ -83,7 +83,6 @@ export function BeforeAfterSection() {
                   lineHeight: "27px",
                   letterSpacing: "-0.18px",
                   color: "#0a0a0a",
-                  whiteSpace: "nowrap",
                 }}
               >
                 Disorganized. Underfunded. Invisible.
@@ -105,14 +104,14 @@ export function BeforeAfterSection() {
 
           {/* ── Arrow button ── */}
           <motion.div
-            className="flex items-center overflow-hidden p-2 shrink-0"
+            className="flex items-center overflow-hidden p-2 shrink-0 self-start md:self-center"
             style={{ background: "#0f143b" }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           >
             <div className="relative size-[32px]">
-              <img alt="" className="absolute block max-w-none size-full" src={imgFrame} />
+              <img alt="" className="absolute block max-w-none size-full" src={imgPicture21} />
             </div>
           </motion.div>
 
@@ -124,11 +123,11 @@ export function BeforeAfterSection() {
             transition={{ duration: 0.65, delay: 0.1, ease: "easeOut" }}
           >
             {/* Image — fills available height */}
-            <div className="flex-1 min-h-0 relative overflow-hidden">
+            <div className="relative overflow-hidden h-[240px] sm:h-[300px] md:h-[360px] lg:h-[390px] xl:h-[420px]">
               <img
                 alt="After — professional store"
                 className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                src={imgPicture21}
+                src={imgFrame}
               />
             </div>
 
@@ -139,7 +138,7 @@ export function BeforeAfterSection() {
                 className="flex items-center justify-center px-3 py-2 border border-[#d4d4d4] w-fit"
                 style={{ background: "#ea1528" }}
               >
-                <p style={{ fontSize: "16px", fontWeight: 400, lineHeight: "16.5px", color: "#fff", whiteSpace: "nowrap" }}>
+                <p style={{ fontSize: "16px", fontWeight: 400, lineHeight: "16.5px", color: "#fff" }}>
                   After
                 </p>
               </div>
@@ -151,7 +150,6 @@ export function BeforeAfterSection() {
                   lineHeight: "27px",
                   letterSpacing: "-0.18px",
                   color: "#0a0a0a",
-                  whiteSpace: "nowrap",
                 }}
               >
                 Professional. Funded. Competing like a chain.

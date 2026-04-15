@@ -603,7 +603,7 @@ function ImpactCTASection() {
           transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
         >
           <Link
-            to="/become-a-member"
+            to="/join"
             className="inline-flex items-center gap-2 bg-[#EA1528] border border-[#EA1528] text-white px-[25px] py-[13px] hover:bg-[#c8101f] hover:border-[#c8101f] transition-all duration-300 group whitespace-nowrap"
             style={{ fontSize: "14px", fontWeight: 500 }}
           >

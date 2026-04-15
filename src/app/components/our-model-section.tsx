@@ -8,7 +8,7 @@ export function OurModelSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#FAFAFA] py-16 md:py-20"
+      className="bg-[#FAFAFA] py-16 md:py-20 hidden"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">

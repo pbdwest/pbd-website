@@ -1,14 +1,17 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import bgImg from "../../assets/Form Section.png";
 
 // Dark gas station background — same asset as CTA section
-const bgImg = "https://www.figma.com/api/mcp/asset/7f88779b-84b9-4e60-b0db-beef4e1ba318";
 
 export function ContactFormSection() {
+  const recipientEmail = "join@powerbuyingdealers.com";
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const [form, setForm] = useState({
     name: "",
@@ -29,9 +32,36 @@ export function ContactFormSection() {
   const selectClass = "w-full bg-white border border-[#E0E0E0] rounded-[8px] px-4 py-3 text-[#0a0a0a] outline-none focus:border-[#111642] transition-colors appearance-none cursor-pointer";
   const selectStyle: React.CSSProperties = { fontSize: "14px", fontWeight: 400, backgroundImage: selectBg, backgroundRepeat: "no-repeat", backgroundPosition: "right 16px center" };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitError("");
+    setSubmitting(true);
+
+    try {
+      const payload = {
+        ...form,
+        _subject: "New PBD contact form submission",
+      };
+
+      const res = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      setSubmitted(true);
+    } catch {
+      setSubmitError("Unable to submit right now. Please try again in a moment.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputClass =
@@ -204,12 +234,18 @@ export function ContactFormSection() {
                 <div className="pt-1">
                   <button
                     type="submit"
+                    disabled={submitting}
                     className="inline-flex items-center gap-3 border border-[#EA1528] text-[#EA1528] px-6 py-3 hover:bg-[#EA1528] hover:text-white transition-all cursor-pointer group"
                     style={{ fontSize: "14px", fontWeight: 500 }}
                   >
-                    Submit Application
+                    {submitting ? "Submitting..." : "Submit Application"}
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </button>
+                  {submitError && (
+                    <p className="mt-3 text-[#EA1528]" style={{ fontSize: "13px", fontWeight: 500 }}>
+                      {submitError}
+                    </p>
+                  )}
                 </div>
               </form>
             )}

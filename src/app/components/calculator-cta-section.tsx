@@ -2,8 +2,8 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
+import calcBgImg from "../../assets/CTASection.png";
 
-const calcBgImg = "https://www.figma.com/api/mcp/asset/890ff596-e3b8-4ecf-869d-0aa0b7227955";
 
 export function CalculatorCTASection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -70,7 +70,7 @@ export function CalculatorCTASection() {
           transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
         >
           <Link
-            to="/contact"
+            to="/rebate-calculator"
             className="inline-flex items-center gap-2 bg-[#EA1528] border border-[#EA1528] text-white px-[25px] py-[13px] hover:bg-white hover:text-[#EA1528] transition-all group"
             style={{ fontSize: "14px", fontWeight: 500 }}
           >

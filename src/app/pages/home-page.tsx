@@ -37,7 +37,7 @@ export default function HomePage() {
       <div data-navbar-theme="dark">
         <ProvenPerformanceSection />
       </div>
-      <TestimonialsSection />
+      <TestimonialsSection/>
       <FAQSection />
       <ContactFormSection />
       <div data-navbar-theme="dark">

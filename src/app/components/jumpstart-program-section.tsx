@@ -110,6 +110,7 @@ export function JumpstartProgramSection() {
                       top: `${pct}%`,
                       transform: "translate(-50%, -50%)",
                       backgroundColor: activeStep >= i ? "#111642" : "rgba(17,22,66,0.2)",
+                      opacity: 0
                     }}
                   />
                 ))}

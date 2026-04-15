@@ -1,11 +1,12 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
+import imgImage1736 from "../../assets/I1.png";
+import imgImage1737 from "../../assets/I2.png";
+import imgImage1738 from "../../assets/I3.png";
+import imgImage1739 from "../../assets/I4.png";
 
 // One unique image per step — from Figma
-const imgImage1736 = "https://www.figma.com/api/mcp/asset/ae733419-1482-414c-ba81-e2e2ca79ae23";
-const imgImage1737 = "https://www.figma.com/api/mcp/asset/89da0fc2-6d44-4205-af50-c53bbe2e0ed1";
-const imgImage1738 = "https://www.figma.com/api/mcp/asset/5309b3e7-e1fa-4b6c-ae86-e2eb944abceb";
-const imgImage1739 = "https://www.figma.com/api/mcp/asset/75a3d9ba-3f66-4af8-80b8-e505b9203181";
+
 
 const steps = [
   {

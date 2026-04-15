@@ -6,29 +6,23 @@ import { Navbar } from "../components/navbar";
 import { FooterSection } from "../components/footer-section";
 import { ContactFormSection } from "../components/contact-form-section";
 import { LogoCloudSection } from "../components/logo-cloud-section";
+import tlConvenienceValet from "../../assets/image 1748.png";
+import tlBalanceBar from "../../assets/image 1749.png";
+import tlFijiWater from "../../assets/image 1781.png";
+import tlMonster from "../../assets/image 1782.png";
+import tlGeneralMills from "../../assets/logo.png";
+import tl7Up from "../../assets/logo (1).png";
+import tlTobaccoBackbar from "../../assets/logo (3).png";
+import tlVenomEnergy from "../../assets/logo (2).png";
+import heroCompositeImg from "../../assets/image 1745.png";
+import coreMarkImg from "../../assets/ImageWithFallback (1).png";
+import whyImg0 from "../../assets/image 1761.png";
+import whyImg1 from "../../assets/image 1762.png";
+import whyImg2 from "../../assets/image 1763.png";
+import whyImg3 from "../../assets/image 1764.png";
+import retailersImg from "../../assets/Container.png";
+import ctaBgImg from "../../assets/CTASection.png";
 // Timeline brand logos — new card design (Figma node 5789-799)
-const tlConvenienceValet = "https://www.figma.com/api/mcp/asset/63cba3b8-d956-4060-ad8d-f7e93e475dc2";
-const tlBalanceBar       = "https://www.figma.com/api/mcp/asset/b0317d5b-6d20-4468-abc6-86dd5c6682df";
-// Remaining brand logos from Figma node 5761-604
-const tlFijiWater        = "https://www.figma.com/api/mcp/asset/8e7392b1-b238-4825-8d31-2fe620cf85fa";
-const tlMonster          = "https://www.figma.com/api/mcp/asset/dec40f34-5f55-4ffb-b6d9-f0017e534d68";
-const tlGeneralMills     = "https://www.figma.com/api/mcp/asset/852f5ca6-63a8-4d4b-8380-f88c53e9ac0f";
-const tl7Up              = "https://www.figma.com/api/mcp/asset/ab00c56e-08d7-499b-b4f0-c32472ada524";
-const tlTobaccoBackbar   = "https://www.figma.com/api/mcp/asset/916eeffb-a9f8-4856-bc90-3f8668cbe7f4";
-const tlVenomEnergy      = "https://www.figma.com/api/mcp/asset/19ee420a-268a-453e-825f-f59cf0ffaa36";
-// Hero composite image from Figma (node 5755-567)
-const heroCompositeImg =
-  "https://www.figma.com/api/mcp/asset/1778b31e-5f83-40d4-a4ca-053add9d50a3";
-
-// Core-Mark story image from Figma (expires in 7 days — replace with a local asset later)
-const coreMarkImg =
-  "https://www.figma.com/api/mcp/asset/42921a68-d840-4854-8fc8-24761e9b43c4";
-
-// Why Vendors section — right panel images from Figma node 5768-4420
-const whyImg0 = "https://www.figma.com/api/mcp/asset/653b15fd-28f8-417b-b778-2e90d4f6b93f"; // Network Access
-const whyImg1 = "https://www.figma.com/api/mcp/asset/71a8b9a1-800e-4bc4-aed3-b5476e3112a4"; // Execute Programs
-const whyImg2 = "https://www.figma.com/api/mcp/asset/a1946029-5a7e-4319-9a8a-cc0cb7fac0ce"; // Program Accountability
-const whyImg3 = "https://www.figma.com/api/mcp/asset/48be4c62-d956-4d80-9d6a-8b068ddbadd5"; // Growth Partnership
 
 // ─── 1. Hero — matches Programs / How It Works pattern ───────────────────────
 function VendorNetworkHero() {
@@ -752,7 +746,6 @@ function WhyVendorsSection() {
 
 // ─── 6. For Retailers ─────────────────────────────────────────────────────────
 // Figma node 5768-3957
-const retailersImg = "https://www.figma.com/api/mcp/asset/eaffff43-17eb-4fe9-80af-d0ef97b2997d";
 
 const retailerBullets = [
   "Access to national vendor programs backed by trusted brands",
@@ -889,7 +882,6 @@ function ForRetailersSection() {
 }
 
 // ─── 7. CTA Banner — Figma node 5775-1257 ────────────────────────────────────
-const ctaBgImg = "https://www.figma.com/api/mcp/asset/b48be672-9029-465f-9c94-d265b0cfaca3";
 
 function CTABannerSection() {
   const sectionRef = useRef<HTMLElement>(null);

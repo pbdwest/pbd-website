@@ -71,7 +71,7 @@ export function TestimonialsSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#FAFAFA] overflow-hidden"
+      className="bg-[#FAFAFA] overflow-hidden hidden"
       style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px]">

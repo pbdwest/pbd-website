@@ -5,7 +5,6 @@ import { Link, useLocation } from "react-router";
 import Identity from "../../imports/Identity";
 
 const navLinks = [
-  { label: "About Us", href: "/about" },
   {
     label: "Programs",
     href: "#",

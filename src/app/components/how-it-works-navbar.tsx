@@ -6,7 +6,6 @@ import Identity from "../../imports/Identity";
 
 const navLinks = [
   { label: "How it Works", href: "/how-it-works" },
-  { label: "About Us", href: "/about" },
   { label: "Contact Us", href: "/contact" },
   { label: "Product Incubation", href: "/product-incubation" },
 ];

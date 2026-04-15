@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import storeImage from "../../assets/ImageWithFallback.png";
 
-const storeImage = "https://www.figma.com/api/mcp/asset/c8141e6d-977d-4298-89f4-0c42adb44c42";
 
 const phases = [
   {
@@ -67,12 +67,12 @@ export function VendorRebatesSection() {
   return (
     <div
       ref={outerRef}
-      className="relative"
-      style={{ height: `${phases.length * 100}vh` }}
+      className="relative h-auto lg:h-[var(--vendor-section-height)]"
+      style={{ ["--vendor-section-height" as string]: `${phases.length * 100}vh` }}
     >
       {/* Sticky inner panel */}
       <div
-        className="sticky top-0 h-screen overflow-hidden bg-[#FAFAFA] flex flex-col justify-center"
+        className="relative lg:sticky lg:top-0 min-h-screen lg:h-screen overflow-hidden bg-[#FAFAFA] flex flex-col justify-center py-12 lg:py-0"
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
         <div className="max-w-[1440px] mx-auto w-full px-6 md:px-10 lg:px-[80px] flex flex-col gap-[56px]">
@@ -120,6 +120,7 @@ export function VendorRebatesSection() {
                       top: `${pct}%`,
                       transform: "translate(-50%, -50%)",
                       backgroundColor: activeStep >= i ? "#111642" : "rgba(17,22,66,0.2)",
+                      opacity: 0
                     }}
                   />
                 ))}
@@ -222,7 +223,7 @@ export function VendorRebatesSection() {
       </div>
 
       {/* Sentinels */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden>
+      <div className="absolute inset-0 pointer-events-none hidden lg:block" aria-hidden>
         {phases.map((_, index) => (
           <div
             key={index}

@@ -125,7 +125,7 @@ export default function ContactPage() {
                     label: "Membership",
                     content: (
                       <Link
-                        to="/become-a-member"
+                        to="/join"
                         className="inline-flex items-center gap-2 text-[#EA1528] hover:underline"
                         style={{ fontSize: "14px", fontWeight: 400, lineHeight: "19.5px" }}
                       >
@@ -193,7 +193,7 @@ export default function ContactPage() {
                   We'll be in touch within one business day. Looking to join the
                   network?{" "}
                   <Link
-                    to="/become-a-member"
+                    to="/join"
                     className="text-[#EA1528] underline underline-offset-2 hover:no-underline transition-all"
                   >
                     Apply for membership here.
@@ -265,7 +265,7 @@ export default function ContactPage() {
                   <p className="text-[#999]" style={{ fontSize: "12px", fontWeight: 400, lineHeight: "19.2px" }}>
                     Looking to join?{" "}
                     <Link
-                      to="/become-a-member"
+                      to="/join"
                       className="text-[#111642] underline underline-offset-2 hover:text-[#EA1528] transition-colors"
                     >
                       Apply for membership

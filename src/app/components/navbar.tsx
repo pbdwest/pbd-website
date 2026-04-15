@@ -6,7 +6,6 @@ import svgPaths from "../../imports/svg-b99e162ar8";
 import Identity from "../../imports/Identity";
 
 const navLinks = [
-  { label: "About Us", href: "/about" },
   { label: "Programs", href: "/programs" },
   { label: "How it Works", href: "/how-it-works" },
   { label: "Vendor Network", href: "/vendor-network" },
@@ -183,7 +182,7 @@ export function Navbar({ forceDark = false }: { forceDark?: boolean }) {
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center shrink-0 relative z-10">
           <Link
-            to="/become-a-member"
+            to="/join"
             className={`border ${borderColor} ${ctaTextColor} ${ctaHoverBg} transition-all duration-300 whitespace-nowrap`}
             style={{
               fontSize: "14px",
@@ -250,7 +249,7 @@ export function Navbar({ forceDark = false }: { forceDark?: boolean }) {
               })}
               <div className="mt-4">
                 <Link
-                  to="/become-a-member"
+                  to="/join"
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block text-center border ${borderColor} ${ctaTextColor} ${ctaHoverBg} transition-all`}
                   style={{
