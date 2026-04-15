@@ -35,10 +35,20 @@ jobs:
 
       - name: Deploy to S3 + Invalidate CloudFront
         run: |
-          if [ "${{ github.ref_name }}" == "main" ]; then
+          # if [ "${{ github.ref_name }}" == "main" ]; then
+          #   BUCKET="pbd-marketing-prod-frontend"
+          #   DISTRIBUTION_ID="${{ secrets.PROD_CLOUDFRONT_ID }}"
+          # else
+          #   BUCKET="pbd-marketing-dev-frontend"
+          #   DISTRIBUTION_ID="${{ secrets.DEV_CLOUDFRONT_ID }}"
+          # fi
+
+
+
+          if [ "${{ github.ref_name }}" == "main" || "${{ github.ref_name }}" == "Ui-fixes" ]; then
             BUCKET="pbd-marketing-prod-frontend"
             DISTRIBUTION_ID="${{ secrets.PROD_CLOUDFRONT_ID }}"
-          else
+          elif [ "${{ github.ref_name }}" == "Ui-fixes" ]; then
             BUCKET="pbd-marketing-dev-frontend"
             DISTRIBUTION_ID="${{ secrets.DEV_CLOUDFRONT_ID }}"
           fi
