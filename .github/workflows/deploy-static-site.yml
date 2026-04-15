@@ -43,6 +43,7 @@ jobs:
           fi
 
           aws s3 sync ./dist s3://$BUCKET --delete
+          
 
           aws cloudfront create-invalidation \
             --distribution-id $DISTRIBUTION_ID \
