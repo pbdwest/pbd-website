@@ -2,11 +2,12 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import heroImage from "figma:asset/9d4a740863ac614ce671b688f2b41bba95f6822b.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 export function HowItWorksHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -15,7 +16,7 @@ export function HowItWorksHero() {
       data-navbar-theme="dark"
     >
       {/* Hero Content */}
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[80px] py-16 md:py-20">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[80px] py-[40px] md:py-20">
         {/* Top Row: Headline + Description */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-[20px] items-end">
           {/* Headline - left */}
@@ -28,7 +29,7 @@ export function HowItWorksHero() {
             <h1
               className="text-white"
               style={{
-                fontSize: "clamp(40px, 6vw, 64px)",
+                fontSize: isMobile ?  "clamp(36px, 3vw, 32px)" : "clamp(40px, 6vw, 64px)",
                 fontWeight: 400,
                 lineHeight: 1.05,
                 letterSpacing: "-0.03em",
@@ -66,7 +67,7 @@ export function HowItWorksHero() {
           <ImageWithFallback
             src={heroImage}
             alt="How It Works"
-            className="w-full h-[440px] object-cover object-top"
+            className="w-full md:h-[440px] md:object-cover object-contain h-[180px] object-top"
           />
         </motion.div>
       </div>

@@ -5,6 +5,7 @@ import imgConsulting from "figma:asset/e8f73d7d653cc44c84744f44670683aadbe542fb.
 import img1 from "figma:asset/f00d5f6a05558cfb901d29c168c2d081ec0ec74e.png";
 import img2 from "figma:asset/4c132584feb98c774d410c0d060e4a6726a40834.png";
 import img3 from "figma:asset/8b03b253c3e6772fb6e91cf651581cf741bbdc80.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 const reasons = [
   {
@@ -43,7 +44,7 @@ export function WhyChooseSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const activeReason = reasons[activeIndex >= 0 ? activeIndex : 0];
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -63,7 +64,7 @@ export function WhyChooseSection() {
           <motion.h2
             className="text-white max-w-[520px]"
             style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
+              fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
               fontWeight: 400,
               lineHeight: 1.1,
               letterSpacing: "-0.03em",
@@ -128,7 +129,7 @@ export function WhyChooseSection() {
                         transition={{ duration: 0.35, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-5 pl-[18px]">
+                        <div className="pb-5 md:pl-[18px]">
                           <p
                             className="text-[#d4d4d4] mb-4 max-w-[440px]"
                             style={{

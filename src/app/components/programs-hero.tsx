@@ -1,11 +1,12 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import imgImage1730 from "figma:asset/1e78698610b57280e6b2a7288bea2a004a66d633.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 export function ProgramsHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -14,7 +15,7 @@ export function ProgramsHero() {
       data-navbar-theme="dark"
     >
       {/* Hero Content */}
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[80px] py-16 md:py-20">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col md:gap-[80px] gap-[40px] py-16 md:py-20 py-[40px]">
         {/* Top Row: Headline + Description */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-[20px] items-end">
           {/* Headline - left */}
@@ -27,9 +28,9 @@ export function ProgramsHero() {
             <h1
               className="text-white"
               style={{
-                fontSize: "64px",
+                fontSize: isMobile ? "36px" : "64px",
                 fontWeight: 400,
-                lineHeight: "67.2px",
+                lineHeight: isMobile ? "40px" : "67.2px",
                 letterSpacing: "-1.92px",
               }}
             >National vendor programs built for independent retailers</h1>
@@ -45,9 +46,9 @@ export function ProgramsHero() {
             <p
               className="text-[#e5e5e5]"
               style={{
-                fontSize: "16px",
+                fontSize: isMobile ? "14px" : "16px",
                 fontWeight: 400,
-                lineHeight: "25.6px",
+                lineHeight: isMobile ? "22px" : "25.6px",
               }}
             >
               Access tobacco, beverage, general merchandise, coffee, and snack programs with pricing, funding, and support typically reserved for national chains. No fees. No royalties. Just programs that drive performance.</p>
@@ -64,7 +65,7 @@ export function ProgramsHero() {
           <img
             src={imgImage1730}
             alt="PBD Programs"
-            className="w-full h-[440px] object-cover object-top"
+            className="w-full md:h-[440px] h-[160px] object-cover object-top"
           />
         </motion.div>
       </div>

@@ -6,6 +6,7 @@ import storeEvaluationImage from "figma:asset/9dcbfcc12bee5a793d63cf2c12980d9f1f
 import categoryResetsImage from "figma:asset/ad929877d38f4114073a4f67ae3f2241d0cdcdc8.png";
 import vendorActivationImage from "figma:asset/25d641be9f086163453e7c5a1e96818100a60816.png";
 import consultancyImage from "figma:asset/17e7a379335502592f4c15274741b1e4222700a2.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 const steps = [
   {
@@ -35,7 +36,7 @@ export function JumpstartProgramSection() {
   const sentinelRefs = useRef<(HTMLDivElement | null)[]>([]);
   const isInView = useInView(outerRef, { once: true, margin: "-80px" });
   const [activeStep, setActiveStep] = useState(0);
-
+  const isMobile = useIsMobile();
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
     sentinelRefs.current.forEach((el, index) => {
@@ -59,14 +60,14 @@ export function JumpstartProgramSection() {
     <div
       ref={outerRef}
       className="relative"
-      style={{ height: `${steps.length * 100}vh` }}
+      style={{ height: isMobile ? '100%' : `${steps.length * 100}vh` }}
     >
       {/* Sticky inner panel */}
       <div
-        className="sticky top-0 h-screen overflow-hidden bg-[#FAFAFA] flex flex-col justify-center"
+        className="md:sticky md:top-0 md:h-screen md:overflow-hidden bg-[#FAFAFA] flex flex-col justify-center "
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
-        <div className="max-w-[1440px] mx-auto w-full px-6 md:px-10 lg:px-16 flex flex-col gap-[56px]">
+        <div className="max-w-[1440px] mx-auto w-full px-6 md:px-10 lg:px-16 flex flex-col gap-[56px] py-[40px] md:py-[0px]">
 
           {/* Header */}
           <div className="flex flex-col gap-8">
@@ -79,7 +80,7 @@ export function JumpstartProgramSection() {
             <motion.h2
               className="text-[#0a0a0a] max-w-[700px]"
               style={{
-                fontSize: "clamp(32px, 4vw, 48px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" :  "clamp(32px, 4vw, 48px)",
                 fontWeight: 400,
                 lineHeight: 1.1,
                 letterSpacing: "-0.03em",
@@ -96,7 +97,7 @@ export function JumpstartProgramSection() {
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-14">
 
             {/* Left: progress track + steps */}
-            <div className="flex-1 flex" style={{ gap: "42px" }}>
+            <div className="flex-1 flex" style={{ gap: isMobile ? "24px" : "42px" }}>
               {/* Vertical progress track */}
               <div className="relative flex-shrink-0" style={{ width: "2px" }}>
                 <div className="absolute inset-0 bg-[#111642]/10" />
@@ -116,12 +117,12 @@ export function JumpstartProgramSection() {
                 ))}
                 <motion.div
                   className="absolute top-0 left-0 w-full bg-[#ea1528]"
-                  animate={{ height: `${progressPercent}%` }}
+                  animate={{ height: isMobile ? '100%' : `${progressPercent}%` }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                 />
                 <motion.div
                   className="absolute"
-                  animate={{ top: `${progressPercent}%` }}
+                  animate={{ top: isMobile ? '0' : `${progressPercent}%` }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                   style={{
                     width: "10px",
@@ -140,7 +141,7 @@ export function JumpstartProgramSection() {
                   return (
                     <motion.div
                       key={step.title}
-                      animate={{ opacity: isPassed ? 1 : 0.3 }}
+                      animate={{ opacity: isPassed  || isMobile ? 1 : 0.3 }}
                       transition={{ duration: 0.4, ease: "easeOut" }}
                     >
                       <div className="mb-1.5">

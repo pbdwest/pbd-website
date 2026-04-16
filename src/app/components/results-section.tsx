@@ -7,6 +7,7 @@ import { motion, useInView } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { useIsMobile } from "./ui/use-mobile";
 
 const results = [
   {
@@ -38,7 +39,7 @@ const results = [
 export function ResultsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -58,7 +59,7 @@ export function ResultsSection() {
           <motion.h2
             className="text-[#0a0a0a] max-w-[700px]"
             style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
+              fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
               fontWeight: 400,
               lineHeight: 1.1,
               letterSpacing: "-0.03em",

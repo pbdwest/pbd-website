@@ -75,7 +75,7 @@ export function HeroSection() {
       </div>
 
       {/* Mobile/tablet view */}
-      <div className="lg:hidden relative min-h-[calc(100dvh-79px)]">
+      <div className="lg:hidden relative min-h-[calc(100dvh-20px)] md:min-h-[calc(100dvh-79px)] ">
         {/* Background image layer */}
         <div
           className="absolute inset-0 pointer-events-none bg-right-bottom bg-no-repeat bg-contain opacity-95"

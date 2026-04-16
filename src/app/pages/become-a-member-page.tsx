@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import { Navbar } from "../components/navbar";
 import { FooterSection } from "../components/footer-section";
 import { LogoCloudSection } from "../components/logo-cloud-section";
+import { useIsMobile } from "../components/ui/use-mobile";
 
 // ─── Shared form constants ───────────────────────────────────────────────────
 const storeCountOptions = ["1", "2–5", "6–10", "11–25", "25+"];
@@ -60,7 +61,7 @@ function MemberHeroForm() {
     e.preventDefault();
     setSubmitted(true);
   };
-
+  const isMobile = useIsMobile();
   return (
     <div
       className="relative grid grid-cols-1 lg:grid-cols-2"
@@ -70,7 +71,7 @@ function MemberHeroForm() {
       {/* ── LEFT: Navy pitch panel ── */}
       <div
         className="relative flex flex-col justify-between px-6 py-12 md:px-12 md:py-16 lg:px-[80px] lg:py-[143px] overflow-hidden"
-        style={{ background: "#111642", minHeight: "849px" }}
+        style={{ background: "#111642", minHeight: isMobile ? "auto" : "849px" }}
       >
         <div className="relative z-10 flex flex-col justify-between h-full">
           {/* Top: Label + Heading + Bullets */}
@@ -89,7 +90,7 @@ function MemberHeroForm() {
               <motion.h1
                 className="text-white"
                 style={{
-                  fontSize: "52px",
+                  fontSize: isMobile ? "36px" : "52px",
                   fontWeight: 400,
                   lineHeight: 1.08,
                   letterSpacing: "-1.56px",
@@ -158,7 +159,7 @@ function MemberHeroForm() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            style={{ paddingTop: "36px" }}
+            style={{ paddingTop: isMobile ? "0px" : "36px" }}
           >
             <p className="text-[#999] mb-6" style={{ fontSize: "13px", fontWeight: 400, lineHeight: 1.5 }}>
               Quick application. Takes less than a minute.
@@ -239,12 +240,11 @@ function MemberHeroForm() {
     </div>
   );
 }
-
 // ─── Contact CTA section (updated to match Figma gradient design) ─────────────
 function ContactCTASection() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={ref}
@@ -266,7 +266,7 @@ function ContactCTASection() {
         }}
       />
 
-      <div className="relative max-w-[1280px] mx-auto flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 py-[96px]">
+      <div className="relative max-w-[1280px] mx-auto flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 md:py-[96px] py-[40px] ">
         {/* Left: heading + body */}
         <motion.div
           className="flex flex-col gap-[29px] max-w-[680px]"
@@ -277,7 +277,7 @@ function ContactCTASection() {
           <h2
             className="text-white"
             style={{
-              fontSize: "clamp(36px, 4.5vw, 65px)",
+              fontSize: isMobile ? "clamp(26px, 3vw, 65px)" : "clamp(36px, 4.5vw, 65px)",
               fontWeight: 400,
               lineHeight: "64px",
               letterSpacing: "-1.68px",

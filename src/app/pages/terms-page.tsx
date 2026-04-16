@@ -1,6 +1,7 @@
 import { Navbar } from "../components/navbar";
 import { FooterSection } from "../components/footer-section";
 import { Link } from "react-router";
+import { useIsMobile } from "../components/ui/use-mobile";
 
 const sections = [
   {
@@ -61,11 +62,11 @@ export default function TermsPage() {
     month: "long",
     day: "numeric",
   });
-
+  const isMobile = useIsMobile();
   return (
     <div className="size-full">
       <Navbar />
-      <div style={{ paddingTop: "79px" }}>
+      <div className="bg-[#111642]" style={{ paddingTop: "79px" }}>
         {/* Hero header */}
         <section
           className="bg-[#111642] py-16 md:py-20"
@@ -135,7 +136,7 @@ export default function TermsPage() {
               </aside>
 
               {/* Main content */}
-              <div className="flex flex-col gap-10">
+              <div className="flex flex-col md:gap-10 gap-8">
                 {sections.map((sec) => (
                   <div
                     key={sec.title}
@@ -155,7 +156,7 @@ export default function TermsPage() {
                     </h2>
                     <p
                       className="text-[#555]"
-                      style={{ fontSize: "16px", fontWeight: 400, lineHeight: 1.75 }}
+                      style={{ fontSize: isMobile ? "14px" : "16px", fontWeight: 400, lineHeight: 1.75 }}
                     >
                       {sec.content}
                     </p>

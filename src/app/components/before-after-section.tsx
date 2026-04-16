@@ -3,12 +3,13 @@ import { motion, useInView } from "motion/react";
 import imgImage1770 from "../../assets/ServicesSection.png";
 import imgPicture21 from "../../assets/arrow-blue.png";
 import imgFrame from "../../assets/ServicesSection2.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 
 export function BeforeAfterSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -31,7 +32,7 @@ export function BeforeAfterSection() {
           <motion.p
             className="text-[#111642]"
             style={{
-              fontSize: "clamp(32px, 3.5vw, 48px)",
+              fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 3.5vw, 48px)",
               fontWeight: 400,
               lineHeight: "1.1",
               letterSpacing: "-1.44px",

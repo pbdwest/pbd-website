@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
+import { useIsMobile } from "./ui/use-mobile";
 
 export interface StatDef {
   prefix?: string;
@@ -7,7 +8,6 @@ export interface StatDef {
   suffix?: string;
   label: string;
 }
-
 // Home page stats
 const homeStats: StatDef[] = [
   { number: 32, suffix: "+", label: "Years Supporting Independent Retailers" },
@@ -62,7 +62,7 @@ function StatItem({
   isInView: boolean;
 }) {
   const count = useCountUp(stat.number, isInView);
-
+  const isMobile = useIsMobile();
   return (
     <motion.div
       className="flex gap-3 items-start"
@@ -80,8 +80,8 @@ function StatItem({
           </span>
         )}
         <span
-          className="font-[Inter] leading-none tabular-nums"
-          style={{ fontSize: "90px", fontWeight: 500 }}
+          className="font-[Inter] leading-none tabular-nums text-sm"
+          style={{ fontSize: isMobile ? "60px" : "90px", fontWeight: 500 }}
         >
           {count}
         </span>
@@ -95,7 +95,7 @@ function StatItem({
         )}
       </div>
       <p
-        className="text-[#E5E5E5] font-[Inter] max-w-[91px] pt-1"
+        className="text-[#E5E5E5] font-[Inter] md:max-w-[91px] max-w-[150px] pt-1"
         style={{ fontSize: "14px", fontWeight: 500, lineHeight: "1.4" }}
       >
         {stat.label}

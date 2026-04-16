@@ -8,6 +8,7 @@ import categoryManagementImage from "figma:asset/b8eb7919780a6fe788d7e5d52a99c1f
 import merchandisingSupportImage from "figma:asset/f89765bdf996612cf7eeba1a421500ab09ecc433.png";
 import distributorPromotionsImage from "figma:asset/e387e30ec66227070dba7cf16d9fe92a81067423.png";
 import dedicatedSupportImage from "figma:asset/fac15b34fe20320dab4651c9c5cd0f284e045b64.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 const benefits = [
   {
@@ -93,11 +94,11 @@ export function WhatMembersReceiveSection() {
       behavior: "smooth",
     });
   };
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
-      className="bg-[#FAFAFA] py-16 md:py-20"
+      className="bg-[#FAFAFA] py-[40px] md:py-20"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
@@ -113,7 +114,7 @@ export function WhatMembersReceiveSection() {
         <motion.h2
           className="text-[#0a0a0a] max-w-[700px] mb-6"
           style={{
-            fontSize: "clamp(32px, 4vw, 48px)",
+            fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
             fontWeight: 400,
             lineHeight: 1.1,
             letterSpacing: "-0.03em",
@@ -128,7 +129,7 @@ export function WhatMembersReceiveSection() {
         {/* Description */}
         <motion.p
           className="text-[#555] max-w-[700px] mb-10 md:mb-14"
-          style={{ fontSize: "16px", fontWeight: 400, lineHeight: 1.7 }}
+          style={{ fontSize:  isMobile ? "14px" : "16px", fontWeight: 400, lineHeight: 1.7 }}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}

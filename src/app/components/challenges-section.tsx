@@ -4,6 +4,7 @@ import dollarIcon from "../../assets/dollar.png";
 import phoneIcon from "../../assets/phone.png";
 import shopIcon from "../../assets/shop.png";
 import imgFrame from "../../assets/tick.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 // Assets
 
@@ -33,7 +34,7 @@ function ChallengeCard({
 }) {
   return (
     <motion.div
-      className="flex flex-1 gap-8 items-start px-3 py-4 min-w-0"
+      className="flex flex-1 md:gap-8 gap-4 items-start md:px-3 md:py-4 py-2 min-w-0"
       initial={{ opacity: 0, y: 16 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.55, delay, ease: "easeOut" }}
@@ -86,14 +87,14 @@ function Divider() {
 export function ChallengesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="bg-white"
-      style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
+      style={{ fontFamily: "'Inter', sans-serif", padding: isMobile ? "40px 0" : "80px 0" }}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[56px]">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[30px] md:gap-[56px]">
 
         {/* Header */}
         <div className="flex flex-col gap-6">
@@ -109,9 +110,9 @@ export function ChallengesSection() {
           <motion.p
             className="text-[#111642]"
             style={{
-              fontSize: "48px",
+              fontSize: isMobile ? "26px" : "48px",
               fontWeight: 400,
-              lineHeight: "52.8px",
+              lineHeight: isMobile ? "36px" : "52.8px",
               letterSpacing: "-1.44px",
               maxWidth: "856px",
             }}

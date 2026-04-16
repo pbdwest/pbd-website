@@ -4,6 +4,7 @@ import imgImage1736 from "../../assets/I1.png";
 import imgImage1737 from "../../assets/I2.png";
 import imgImage1738 from "../../assets/I3.png";
 import imgImage1739 from "../../assets/I4.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 // One unique image per step — from Figma
 
@@ -43,14 +44,14 @@ export function HowProgramsWorkSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="bg-[#111642]"
-      style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
+      style={{ fontFamily: "'Inter', sans-serif", padding: isMobile ? "40px 0" : "80px 0" }}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[56px]">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col md:gap-[56px] gap-[30px]">
 
         {/* Header */}
         <div className="flex flex-col gap-4">
@@ -66,7 +67,7 @@ export function HowProgramsWorkSection() {
           <motion.p
             className="text-white"
             style={{
-              fontSize: "clamp(32px, 3.5vw, 48px)",
+              fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 3.5vw, 48px)",
               fontWeight: 400,
               lineHeight: 1.1,
               letterSpacing: "-1.44px",
@@ -133,7 +134,7 @@ export function HowProgramsWorkSection() {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="pl-[18px] pb-5 flex flex-col gap-[16px]">
+                        <div className="md:pl-[18px] pb-5 flex flex-col gap-[16px]">
                           {/* Description */}
                           <p
                             className="text-[#d4d4d4]"

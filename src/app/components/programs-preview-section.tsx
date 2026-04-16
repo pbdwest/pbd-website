@@ -7,6 +7,7 @@ import Group271 from "../../imports/Group271";
 import Group272 from "../../imports/Group272";
 import Group275 from "../../imports/Group275";
 import Group276 from "../../imports/Group276";
+import { useIsMobile } from "./ui/use-mobile";
 
 const programsImg = "https://www.figma.com/api/mcp/asset/d0283022-0c9f-4a2b-97f0-3bdb7a1a0337";
 
@@ -41,12 +42,12 @@ const programElements = [
 export function ProgramsPreviewSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="bg-[#FAFAFA]"
-      style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
+      style={{ fontFamily: "'Inter', sans-serif",  padding: isMobile ? "40px 0" : "80px 0" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[56px]">
         {/* Header */}
@@ -60,7 +61,7 @@ export function ProgramsPreviewSection() {
           <motion.h2
             className="text-[#111642]"
             style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
+              fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
               fontWeight: 400,
               lineHeight: 1.1,
               letterSpacing: "-0.03em",
@@ -106,7 +107,7 @@ export function ProgramsPreviewSection() {
                     <div className="flex flex-col gap-[6px]" style={{ letterSpacing: "-0.18px" }}>
                       <h3
                         className="text-[#111642]"
-                        style={{ fontSize: "20px", fontWeight: 600, lineHeight: 1.3 }}
+                        style={{ fontSize: isMobile ? "16px" : "20px", fontWeight: 600, lineHeight: 1.3 }}
                       >
                         {element.title}
                       </h3>
@@ -124,7 +125,7 @@ export function ProgramsPreviewSection() {
 
             {/* Right: Image — matches height of program list */}
             <motion.div
-              className="flex-1 w-full min-h-[400px] lg:min-h-0 overflow-hidden"
+              className="flex-1 w-full md:min-h-[400px] lg:min-h-0 overflow-hidden"
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
