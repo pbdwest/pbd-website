@@ -3,12 +3,13 @@ import { motion, useInView } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import calcBgImg from "../../assets/CTASection.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 
 export function CalculatorCTASection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -34,13 +35,13 @@ export function CalculatorCTASection() {
         }}
       />
 
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] py-[80px] flex flex-col lg:flex-row items-end justify-between gap-[56px]">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] py-[40px] md:py-[80px] flex flex-col lg:flex-row items-end justify-between gap-[56px]">
         {/* Left: heading + subtext */}
         <div className="flex flex-col gap-[29px] max-w-[680px]">
           <motion.h2
             className="text-white"
             style={{
-              fontSize: "clamp(36px, 5vw, 65px)",
+              fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(36px, 5vw, 65px)",
               fontWeight: 400,
               lineHeight: 1.0,
               letterSpacing: "-0.026em",

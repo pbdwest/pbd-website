@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import { Plus, Minus } from "lucide-react";
+import { useIsMobile } from "./ui/use-mobile";
 
 const faqs = [
   {
@@ -62,6 +63,7 @@ function FAQItem({
   onToggle: () => void;
   isInView: boolean;
 }) {
+  const isMobile = useIsMobile();
   return (
     <motion.div
       className="border-b border-[#E0E0E0]"
@@ -102,13 +104,13 @@ function FAQItem({
             transition={{ duration: 0.35, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="pb-6 pr-12 flex flex-col gap-3">
+            <div className="pb-6 md:pr-12 pr-6 flex flex-col gap-3">
               {faq.paragraphs.map((para, i) => (
                 <p
                   key={i}
                   className="text-[#555]"
                   style={{
-                    fontSize: "16px",
+                    fontSize: isMobile ? "14px" : "16px",
                     fontWeight: 400,
                     lineHeight: 1.7,
                   }}
@@ -128,17 +130,17 @@ export function FAQSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="bg-[#FFFFFF]"
-      style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
+      style={{ fontFamily: "'Inter', sans-serif", padding: isMobile ? "40px 0" : "80px 0" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px]">
         {/* Section Label */}
         <p
-          className="text-[#999] uppercase tracking-[0.15em] mb-[56px]"
+          className="text-[#999] uppercase tracking-[0.15em] md:mb-[56px] mb-[26px]"
           style={{ fontSize: "11.2px", fontWeight: 500 }}
         >
           FAQ
@@ -150,7 +152,7 @@ export function FAQSection() {
             <motion.h2
               className="text-[#0a0a0a] max-w-[420px]"
               style={{
-                fontSize: "clamp(32px, 4vw, 48px)",
+                fontSize: isMobile ?  "clamp(25px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
                 fontWeight: 400,
                 lineHeight: 1.1,
                 letterSpacing: "-0.03em",

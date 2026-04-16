@@ -10,16 +10,17 @@ import logo1775 from "../../assets/logo-1775.svg";
 import logo1776 from "../../assets/logo-1776.svg";
 import logo1777 from "../../assets/logo-1777.svg";
 import logo1780 from "../../assets/logo-1780.svg";
+import { useIsMobile } from "./ui/use-mobile";
 
 export function LogoCloudSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="bg-[#FAFAFA]"
-      style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
+      style={{ fontFamily: "'Inter', sans-serif", padding: isMobile ? "40px 0" : "80px 0" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px]">
         {/* "Trusted Brands Trust Us" Tag */}

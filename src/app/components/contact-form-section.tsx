@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import bgImg from "../../assets/Form Section.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 // Dark gas station background — same asset as CTA section
 
@@ -68,7 +69,7 @@ export function ContactFormSection() {
     "w-full bg-white border border-[#E0E0E0] rounded-[8px] px-4 py-3 text-[#0a0a0a] placeholder-[#bbb] outline-none focus:border-[#111642] transition-colors";
   const inputStyle: React.CSSProperties = { fontSize: "14px", fontWeight: 400 };
   const labelStyle: React.CSSProperties = { fontSize: "13px", fontWeight: 500, letterSpacing: "-0.13px" };
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -87,7 +88,7 @@ export function ContactFormSection() {
       <div className="absolute inset-0 bg-black/60" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] py-20 md:py-[100px]">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] py-[40px] md:py-[100px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
           {/* Left: Heading + description */}
@@ -100,7 +101,7 @@ export function ContactFormSection() {
             <h2
               className="text-white"
               style={{
-                fontSize: "clamp(36px, 4.5vw, 65px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(36px, 4.5vw, 65px)",
                 fontWeight: 400,
                 lineHeight: 1.0,
                 letterSpacing: "-0.026em",
@@ -150,7 +151,7 @@ export function ContactFormSection() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="bg-white rounded-[16px] p-8 md:p-10 flex flex-col gap-5"
+                className="bg-white rounded-[16px] px-4 py-10 md:p-10 flex flex-col gap-5"
               >
                 {/* Row 1: Name + Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

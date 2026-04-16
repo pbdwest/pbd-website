@@ -6,6 +6,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import step1Image from "figma:asset/d53d8c98d92bf4951a4fe6b032e083859b247ad5.png";
 import step2Image from "figma:asset/f854561c8f7679840783f5d293116468ec50da59.png";
 import step3Image from "figma:asset/0f505cce767ac3a8236f5ac06db5845284724c64.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 const steps = [
   {
@@ -55,7 +56,7 @@ export function HowItWorksSection() {
   // Progress bar: fraction of steps completed
   const progressPercent = (activeStep / (steps.length - 1)) * 100;
   const anchorPercents = steps.map((_, i) => (i / (steps.length - 1)) * 100);
-
+  const isMobile = useIsMobile();
   return (
     // Outer wrapper — tall enough to scroll through all steps (1 step per 100vh)
     <div
@@ -81,7 +82,7 @@ export function HowItWorksSection() {
             <motion.h2
               className="text-[#0a0a0a] max-w-[700px]"
               style={{
-                fontSize: "clamp(32px, 4vw, 48px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
                 fontWeight: 400,
                 lineHeight: 1.1,
                 letterSpacing: "-0.03em",
@@ -119,14 +120,14 @@ export function HowItWorksSection() {
                 ))}
                 {/* Red fill */}
                 <motion.div
-                  className="absolute top-0 left-0 w-full bg-[#ea1528]"
-                  animate={{ height: `${progressPercent}%` }}
+                  className="absolute top-0 left-0 w-full md:bg-[#ea1528] bg-[#ea1528]"
+                  animate={{ height: isMobile ? '100%' : `${progressPercent}%` }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                 />
                 {/* Square indicator */}
                 <motion.div
                   className="absolute"
-                  animate={{ top: `${progressPercent}%` }}
+                  animate={{ top: isMobile ? '0' : `${progressPercent}%` }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                   style={{
                     width: "10px",
@@ -145,7 +146,7 @@ export function HowItWorksSection() {
                   return (
                     <motion.div
                       key={step.title}
-                      animate={{ opacity: isPassed ? 1 : 0.3 }}
+                      animate={{ opacity: isPassed || isMobile ? 1 : 0.3 }}
                       transition={{ duration: 0.4, ease: "easeOut" }}
                     >
                       <div className="mb-1.5">

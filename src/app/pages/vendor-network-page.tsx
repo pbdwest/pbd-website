@@ -22,13 +22,14 @@ import whyImg2 from "../../assets/image 1763.png";
 import whyImg3 from "../../assets/image 1764.png";
 import retailersImg from "../../assets/Container.png";
 import ctaBgImg from "../../assets/CTASection.png";
+import { useIsMobile } from "../components/ui/use-mobile";
 // Timeline brand logos — new card design (Figma node 5789-799)
 
 // ─── 1. Hero — matches Programs / How It Works pattern ───────────────────────
 function VendorNetworkHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -36,7 +37,7 @@ function VendorNetworkHero() {
       style={{ fontFamily: "'Inter', sans-serif", paddingTop: "79px" }}
       data-navbar-theme="dark"
     >
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[80px] py-16 md:py-20">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[40px] md:gap-[80px] py-[40px] md:py-20">
         {/* Top Row: Headline + Description */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-[20px] items-end">
           {/* Headline */}
@@ -49,7 +50,7 @@ function VendorNetworkHero() {
             <h1
               className="text-white"
               style={{
-                fontSize: "clamp(40px, 6vw, 64px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(40px, 6vw, 64px)",
                 fontWeight: 400,
                 lineHeight: 1.05,
                 letterSpacing: "-0.03em",
@@ -89,8 +90,8 @@ function VendorNetworkHero() {
           <img
             src={heroCompositeImg}
             alt="Vendor Network — three-panel hero"
-            className="w-full object-cover"
-            style={{ height: "405px", objectPosition: "center" }}
+            className="w-full md:object-cover object-contain"
+            style={{ height: isMobile ? "auto" : "405px", objectPosition: "center" }}
           />
         </motion.div>
       </div>
@@ -174,14 +175,14 @@ function VendorStatsSection() {
 function PartnershipStorySection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="bg-white"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] py-[80px] flex flex-col gap-[56px]">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] md:py-[80px] py-[40px] flex flex-col gap-[30px] md:gap-[56px]">
         {/* Section Header */}
         <div className="flex flex-col gap-6">
           <motion.p
@@ -198,7 +199,7 @@ function PartnershipStorySection() {
             <motion.h2
               className="text-[#111642] flex-1"
               style={{
-                fontSize: "clamp(32px, 4vw, 48px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
                 fontWeight: 400,
                 lineHeight: 1.1,
                 letterSpacing: "-0.03em",
@@ -217,7 +218,7 @@ function PartnershipStorySection() {
 
         {/* Image + Body copy — 2 column grid */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-[64px]"
+          className="grid grid-cols-1 lg:grid-cols-2 md:gap-[64px] gap-[32px]"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
@@ -251,7 +252,7 @@ function PartnershipStorySection() {
             <div className="flex flex-col gap-6">
               <p
                 className="text-[#525252]"
-                style={{ fontSize: "16px", fontWeight: 400, lineHeight: 1.6 }}
+                style={{ fontSize: isMobile ? "14px" : "16px", fontWeight: 400, lineHeight: 1.6 }}
               >
                 In the early 1990s, PBD entered into a strategic relationship with Core-Mark during a pivotal period in the company's history, helping support its restructuring and repositioning within the convenience retail industry.
               </p>
@@ -268,7 +269,7 @@ function PartnershipStorySection() {
               <p
                 className="text-[#222]"
                 style={{
-                  fontSize: "16px",
+                  fontSize: isMobile ? "14px" : "16px",
                   fontWeight: 500,
                   lineHeight: 1.75,
                 }}
@@ -391,7 +392,7 @@ function VendorTimelineSection() {
 
   // Header fade-in
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     // Outer: tall enough to provide the scroll distance for pinning
     <div
@@ -407,7 +408,7 @@ function VendorTimelineSection() {
         className="sticky top-0 overflow-hidden bg-[#fafafa]"
       >
         {/* Header — constrained + padded, same as every other section */}
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] pt-[80px]">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] md:pt-[80px] pt-[40px]">
           <div ref={headerRef} className="mb-[80px]">
             <motion.p
               className="text-[#999] uppercase tracking-[0.14em] mb-5"
@@ -422,7 +423,7 @@ function VendorTimelineSection() {
               <motion.h2
                 className="text-[#0a0a0a] flex-1"
                 style={{
-                  fontSize: "clamp(28px, 3.5vw, 48px)",
+                  fontSize: isMobile ?  "clamp(22px, 3vw, 32px)" : "clamp(28px, 3.5vw, 48px)",
                   fontWeight: 400,
                   lineHeight: 1.1,
                   letterSpacing: "-0.03em",
@@ -449,7 +450,7 @@ function VendorTimelineSection() {
             </div>
             <motion.p
               className="text-[#555] max-w-[640px] mt-4"
-              style={{ fontSize: "16px", fontWeight: 400, lineHeight: 1.6 }}
+              style={{ fontSize: isMobile ? "14px" : "16px", fontWeight: 400, lineHeight: 1.6 }}
               initial={{ opacity: 0, y: 16 }}
               animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.3, ease: "easeOut" }}
@@ -529,7 +530,7 @@ function VendorTimelineSection() {
         </div>
 
         {/* Progress bar — also padded consistently */}
-        <div className="px-6 md:px-10 lg:px-[80px] pb-[80px]">
+        <div className="px-6 md:px-10 lg:px-[80px] md:pb-[80px] pb-[40px]">
           <div className="mt-[56px] h-px bg-[#e5e5e5] relative">
             <motion.div
               className="absolute left-0 top-0 h-full bg-[#ec2c3e]"
@@ -585,7 +586,7 @@ function WhyVendorsSection() {
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
   const [activeIndex, setActiveIndex] = useState(0);
   const active = whyItems[activeIndex];
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -606,11 +607,11 @@ function WhyVendorsSection() {
           >
             For Vendors
           </motion.p>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[64px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-[64px] gap-[32px]">
             <motion.h2
               className="text-white"
               style={{
-                fontSize: "clamp(32px, 4vw, 48px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
                 fontWeight: 400,
                 lineHeight: 1.1,
                 letterSpacing: "-0.03em",
@@ -689,7 +690,7 @@ function WhyVendorsSection() {
                       initial={false}
                       animate={isActive ? { y: 0, opacity: 1 } : { y: 8, opacity: 0 }}
                       transition={{ duration: 0.35, delay: isActive ? 0.08 : 0, ease: "easeOut" }}
-                      className="pl-[18px] pb-6"
+                      className="md:pl-[18px] pb-6"
                     >
                       <p
                         className="text-[#d4d4d4] mb-4"
@@ -757,14 +758,14 @@ const retailerBullets = [
 function ForRetailersSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="bg-white"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] py-[80px] flex flex-col gap-[56px]">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] md:py-[80px] py-[40px] flex flex-col gap-[30px] md:gap-[56px]">
 
         {/* ── Header ── */}
         <div className="flex flex-col gap-6">
@@ -778,11 +779,11 @@ function ForRetailersSection() {
             For Retailers
           </motion.p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[64px] items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-[64px] gap-[32px] items-start">
             <motion.h2
               className="text-[#111642]"
               style={{
-                fontSize: "clamp(32px, 4vw, 48px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" :  "clamp(32px, 4vw, 48px)",
                 fontWeight: 400,
                 lineHeight: 1.1,
                 letterSpacing: "-0.03em",
@@ -796,7 +797,7 @@ function ForRetailersSection() {
 
             <motion.p
               className="text-[#555]"
-              style={{ fontSize: "16px", fontWeight: 400, lineHeight: 1.6 }}
+              style={{ fontSize: isMobile ? "14px" : "16px", fontWeight: 400, lineHeight: 1.6 }}
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.15 }}
@@ -886,7 +887,7 @@ function ForRetailersSection() {
 function CTABannerSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -896,10 +897,10 @@ function CTABannerSection() {
     >
       {/* LEFT — navy→blue gradient with dot-grid bg image */}
       <motion.div
-        className="relative flex-1 overflow-hidden flex flex-col justify-between px-[80px] py-[32px] gap-8"
+        className="relative flex-1 overflow-hidden flex flex-col justify-between md:px-[80px] px-[24px] py-[32px] gap-8"
         style={{
           background: "linear-gradient(to bottom, #111642, #2b38a8)",
-          minHeight: "343px",
+          minHeight:  isMobile ? "auto" : "343px",
         }}
         initial={{ opacity: 0, y: 24 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -922,7 +923,7 @@ function CTABannerSection() {
           <h3
             className="text-white"
             style={{
-              fontSize: "clamp(28px, 3.2vw, 42px)",
+              fontSize: isMobile ?  "clamp(22px, 3vw, 32px)" : "clamp(28px, 3.2vw, 42px)",
               fontWeight: 500,
               lineHeight: 1.1,
               letterSpacing: "-0.04em",
@@ -945,10 +946,10 @@ function CTABannerSection() {
 
       {/* RIGHT — bright lavender panel */}
       <motion.div
-        className="relative flex flex-col justify-between overflow-hidden px-[32px] lg:px-[80px] py-[32px]"
+        className="relative flex flex-col justify-between overflow-hidden px-[32px] lg:px-[80px] py-[32px] gap-8 md:gap-0"
         style={{
           backgroundColor: "#e3dcfb",
-          minHeight: "343px",
+          minHeight: isMobile ? "auto" : "343px",
           flexShrink: 0,
           flexBasis: "clamp(320px, 42%, 595px)",
         }}
@@ -958,7 +959,7 @@ function CTABannerSection() {
       >
         <h3
           style={{
-            fontSize: "clamp(28px, 3.2vw, 42px)",
+            fontSize: isMobile ?  "clamp(22px, 3vw, 32px)" : "clamp(28px, 3.2vw, 42px)",
             fontWeight: 500,
             lineHeight: 1.1,
             letterSpacing: "-0.04em",

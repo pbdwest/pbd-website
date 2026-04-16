@@ -5,6 +5,7 @@ import applyImage from "figma:asset/7f8e78a0b6f2149e9344f681143d2c8df8e99fbb.png
 import qualifyImage from "figma:asset/089f3a5b94a579bae9fff7497c84ac1bf812282d.png";
 import investImage from "figma:asset/32135403af1c21277ca6f79a8751b845837b79d9.png";
 import earningImage from "figma:asset/0dd055c7d8ac7bc62f274845ec032161e5d5378a.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 const steps = [
   {
@@ -45,13 +46,13 @@ export function ProgramsProcessSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const isMobile = useIsMobile();
   const activeStep = steps[activeIndex >= 0 ? activeIndex : 0];
 
   return (
     <section
       ref={sectionRef}
-      className="bg-white py-16 md:py-20"
+      className="bg-white py-[40px] md:py-20"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
@@ -68,7 +69,7 @@ export function ProgramsProcessSection() {
           <motion.h2
             className="text-[#111642] max-w-[520px]"
             style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
+              fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" :  "clamp(32px, 4vw, 48px)",
               fontWeight: 400,
               lineHeight: 1.1,
               letterSpacing: "-0.03em",
@@ -133,7 +134,7 @@ export function ProgramsProcessSection() {
                         transition={{ duration: 0.35, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-5 pl-[18px]">
+                        <div className="pb-5 md:pl-[18px]">
                           <p
                             className="text-[#444] mb-4 max-w-[440px]"
                             style={{

@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
+import { useIsMobile } from "./ui/use-mobile";
 
 // Full gas-station image with red grid overlay baked in — 1440×697px from Figma
 const ctaBgImg = "https://www.figma.com/api/mcp/asset/7f88779b-84b9-4e60-b0db-beef4e1ba318";
@@ -9,7 +10,7 @@ const ctaBgImg = "https://www.figma.com/api/mcp/asset/7f88779b-84b9-4e60-b0db-be
 export function CTASection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}

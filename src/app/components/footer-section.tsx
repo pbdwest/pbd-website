@@ -2,8 +2,10 @@ import { Link } from "react-router";
 import Container from "../../imports/Container";
 import svgPaths from "../../imports/svg-17oktqildz";
 import watermarkImage from "figma:asset/5912cf2c878b4927aca022f33fc41291a02a09b4.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 export function FooterSection() {
+  const isMobile = useIsMobile();
   return (
     <footer
       className="bg-[#111642] relative w-full overflow-hidden"
@@ -89,7 +91,7 @@ export function FooterSection() {
         </div>
 
         {/* Bottom bar: divider + social icons + copyright */}
-        <div className="relative flex items-center justify-between border-t border-[rgba(255,255,255,0.12)] py-5 lg:h-[65px] lg:py-0">
+        <div className="relative flex items-center justify-between border-t border-[rgba(255,255,255,0.12)] py-5 lg:h-[65px] lg:py-0 md:flex-row flex-col gap-3">
           {/* Social icons — left side */}
           <div
             className="flex items-center"
@@ -137,7 +139,7 @@ export function FooterSection() {
         </div>
 
         {/* Spacer to show watermark below content */}
-        <div style={{ height: "120px" }} />
+        <div style={{ height: isMobile ? "auto" : "120px" }} />
       </div>
     </footer>
   );
