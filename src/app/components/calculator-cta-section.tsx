@@ -2,13 +2,14 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
+import calcBgImg from "../../assets/CTASection.png";
+import { useIsMobile } from "./ui/use-mobile";
 
-const calcBgImg = "https://www.figma.com/api/mcp/asset/890ff596-e3b8-4ecf-869d-0aa0b7227955";
 
 export function CalculatorCTASection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -34,13 +35,13 @@ export function CalculatorCTASection() {
         }}
       />
 
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] py-[80px] flex flex-col lg:flex-row items-end justify-between gap-[56px]">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] py-[40px] md:py-[80px] flex flex-col lg:flex-row items-end justify-between gap-[56px]">
         {/* Left: heading + subtext */}
         <div className="flex flex-col gap-[29px] max-w-[680px]">
           <motion.h2
             className="text-white"
             style={{
-              fontSize: "clamp(36px, 5vw, 65px)",
+              fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(36px, 5vw, 65px)",
               fontWeight: 400,
               lineHeight: 1.0,
               letterSpacing: "-0.026em",
@@ -49,7 +50,7 @@ export function CalculatorCTASection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
           >
-            See what your store could earn.
+            See the financial impact
           </motion.h2>
           <motion.p
             className="text-white"
@@ -58,7 +59,7 @@ export function CalculatorCTASection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
-            Your number depends on your vendor programs, distributor relationships, and store size. Get a personalized estimate in 60 seconds.
+            Estimate how PBD programs can impact your store-level rebates and profitability based on your size, programs, and distributor relationships.
           </motion.p>
         </div>
 
@@ -70,11 +71,11 @@ export function CalculatorCTASection() {
           transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
         >
           <Link
-            to="/contact"
+            to="/rebate-calculator"
             className="inline-flex items-center gap-2 bg-[#EA1528] border border-[#EA1528] text-white px-[25px] py-[13px] hover:bg-white hover:text-[#EA1528] transition-all group"
             style={{ fontSize: "14px", fontWeight: 500 }}
           >
-            Get My Estimate
+            Estimate your rebate opportunity
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

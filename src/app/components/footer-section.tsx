@@ -2,8 +2,10 @@ import { Link } from "react-router";
 import Container from "../../imports/Container";
 import svgPaths from "../../imports/svg-17oktqildz";
 import watermarkImage from "figma:asset/5912cf2c878b4927aca022f33fc41291a02a09b4.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 export function FooterSection() {
+  const isMobile = useIsMobile();
   return (
     <footer
       className="bg-[#111642] relative w-full overflow-hidden"
@@ -43,11 +45,9 @@ export function FooterSection() {
               </p>
               <div className="flex flex-col items-start" style={{ gap: "15px", paddingTop: "1px", paddingBottom: "1px", width: "100%" }}>
                 {[
-                  { label: "About Us", to: "/about" },
                   { label: "Programs", to: "/programs" },
                   { label: "How It Works", to: "/how-it-works" },
                   { label: "Vendor Network", to: "/vendor-network" },
-                  { label: "Impact", to: "/impact" },
                 ].map((item) => (
                   <Link
                     key={item.label}
@@ -72,7 +72,7 @@ export function FooterSection() {
               <div className="flex flex-col items-start" style={{ gap: "15px", paddingTop: "1px", paddingBottom: "1px", width: "100%" }}>
                 {[
                   { label: "Contact Us", to: "/contact" },
-                  { label: "Become a Member", to: "/become-a-member" },
+                  { label: "Become a Member", to: "/join" },
                   { label: "Privacy Policy", to: "/privacy" },
                   { label: "Terms of Service", to: "/terms" },
                 ].map((item) => (
@@ -91,7 +91,7 @@ export function FooterSection() {
         </div>
 
         {/* Bottom bar: divider + social icons + copyright */}
-        <div className="relative flex items-center justify-between border-t border-[rgba(255,255,255,0.12)] py-5 lg:h-[65px] lg:py-0">
+        <div className="relative flex items-center justify-between border-t border-[rgba(255,255,255,0.12)] py-5 lg:h-[65px] lg:py-0 md:flex-row flex-col gap-3">
           {/* Social icons — left side */}
           <div
             className="flex items-center"
@@ -134,12 +134,12 @@ export function FooterSection() {
             className="font-normal text-white whitespace-nowrap"
             style={{ fontSize: "12px", lineHeight: "18px" }}
           >
-            © 2026 PBD West. All rights reserved.
+            © 2026 Power Buying Dealers. All rights reserved.
           </p>
         </div>
 
         {/* Spacer to show watermark below content */}
-        <div style={{ height: "120px" }} />
+        <div style={{ height: isMobile ? "auto" : "120px" }} />
       </div>
     </footer>
   );

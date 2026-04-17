@@ -9,7 +9,7 @@ import { ResultsSection } from "../components/results-section";
 import { ProvenPerformanceSection } from "../components/proven-performance-section";
 import { LogoCloudSection } from "../components/logo-cloud-section";
 import { WhyChooseSection } from "../components/why-choose-section";
-import { CTASection } from "../components/cta-section";
+
 import { TestimonialsSection } from "../components/testimonials-section";
 import { FAQSection } from "../components/faq-section";
 import { ContactFormSection } from "../components/contact-form-section";
@@ -24,23 +24,20 @@ export default function HomePage() {
         <HeroSection />
       </div>
       <TrustedNumbers />
-      <AboutSection />
+      {/* <AboutSection /> */}
       <LogoCloudSection />
       {/* <ServicesSection /> */}
       <ProgramsPreviewSection />
-      <div data-navbar-theme="dark">
-        <CalculatorCTASection />
-      </div>
       <HowItWorksSection />
       <WhyChooseSection />
       <ResultsSection />
       <div data-navbar-theme="dark">
-        <ProvenPerformanceSection />
+        <CalculatorCTASection />
       </div>
       <div data-navbar-theme="dark">
-        <CTASection />
+        <ProvenPerformanceSection />
       </div>
-      <TestimonialsSection />
+      <TestimonialsSection/>
       <FAQSection />
       <ContactFormSection />
       <div data-navbar-theme="dark">

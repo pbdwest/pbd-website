@@ -4,10 +4,10 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 
 const opportunityBullets = [
-  "Multi-state retail footprint",
-  "Single point of contact",
-  "No store-by-store outreach",
-  "Markets chains don't dominate",
+  "Access to a coordinated retail network",
+  "Improved execution at the store level",
+  "Increased volume and distribution",
+  "Stronger program performance",
 ];
 
 const howItWorksBullets = [
@@ -42,7 +42,7 @@ export function AboutRoiSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-white"
+      className="bg-[#FAFAFA]"
       style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[56px]">
@@ -75,7 +75,7 @@ export function AboutRoiSection() {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
-              Independent convenience stores are fragmented and hard to reach at scale. PBD West changes that — organizing hundreds of stores into one accountable network so your programs get placed, tracked, and executed.
+              Manufacturers and distributors looking to grow distribution, improve execution, and reach independent retailers at scale.
             </motion.p>
           </div>
         </div>
@@ -96,7 +96,7 @@ export function AboutRoiSection() {
                 The Opportunity
               </p>
               <h3 className="text-[#0a0a0a]" style={{ fontSize: "32px", fontWeight: 400, lineHeight: 1.375, letterSpacing: "-0.045em" }}>
-                A market that's hard to reach. Until now.
+                What vendors get through PBD
               </h3>
             </div>
             <BulletList items={opportunityBullets} />
@@ -157,7 +157,7 @@ export function AboutRoiSection() {
             className="inline-flex items-center gap-3 border border-[#EA1528] text-[#EA1528] px-[25px] py-[13px] hover:bg-[#EA1528] hover:text-white transition-all group"
             style={{ fontSize: "14px", fontWeight: 500 }}
           >
-            Learn More
+            Partner with PBD
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

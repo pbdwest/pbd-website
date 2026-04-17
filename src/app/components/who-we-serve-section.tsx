@@ -5,10 +5,10 @@ import { motion, useInView } from "motion/react";
 const usMapImg = "https://www.figma.com/api/mcp/asset/f4e82986-6991-4b48-b94d-a5285358f6e3";
 
 const stats = [
-  { value: "300+", label: "Owner operator trust PBD" },
-  { value: "250+", label: "Zipcodes covered across USA" },
+  { value: "400+", label: "Stores in the network" },
+  { value: "24+",  label: "States with active stores" },
   { value: "20+",  label: "Active vendor partnerships" },
-  { value: "$4k",  label: "Paid in rebates for each store" },
+  { value: "$100M+", label: "In vendor rebates generated" },
 ];
 
 export function WhoWeServeSection() {
@@ -42,7 +42,7 @@ export function WhoWeServeSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.65, ease: "easeOut" }}
           >
-            Serving independent truck stops &amp; c-store operators across US
+            Independent truck stops and c-store operators, connected through one network
           </motion.h2>
         </div>
 
@@ -71,7 +71,7 @@ export function WhoWeServeSection() {
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
           >
             <p className="text-[#d4d4d4]" style={{ fontSize: "16px", fontWeight: 400, lineHeight: 1.5, maxWidth: "560px" }}>
-              PBD West bridges that gap, connecting you with vendor rebates, category programs, and promotional funding designed to grow your store.
+              PBD brings independent stores together into a network that vendors can support with programs, funding, and execution at scale.
             </p>
 
             {/* 2×2 stats grid */}

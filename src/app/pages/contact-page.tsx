@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 import { Link } from "react-router";
 import { Navbar } from "../components/navbar";
 import { FooterSection } from "../components/footer-section";
+import { useIsMobile } from "../components/ui/use-mobile";
 
 // ─── Shared input style ───────────────────────────────────────────────────────
 const inputCls =
@@ -43,7 +44,7 @@ export default function ContactPage() {
     e.preventDefault();
     setSubmitted(true);
   };
-
+  const isMobile = useIsMobile();
   return (
     <div className="size-full" style={{ fontFamily: "'Inter', sans-serif" }}>
       <Navbar forceDark />
@@ -57,7 +58,7 @@ export default function ContactPage() {
         {/* ── LEFT: Navy context panel ── */}
         <div
           className="relative flex flex-col justify-between px-6 py-12 md:px-12 md:py-16 lg:px-[80px] lg:py-[143px] overflow-hidden"
-          style={{ background: "#111642", minHeight: "849px" }}
+          style={{ background: "#111642", minHeight: isMobile ? "auto" : "849px" }}
         >
           <div className="relative z-10 flex flex-col justify-between h-full">
             {/* Top: Label + Heading + Body + Contact details */}
@@ -76,7 +77,7 @@ export default function ContactPage() {
                 <motion.h1
                   className="text-white"
                   style={{
-                    fontSize: "52px",
+                    fontSize: isMobile ? "36px" : "52px",
                     fontWeight: 400,
                     lineHeight: 1.08,
                     letterSpacing: "-1.56px",
@@ -90,7 +91,7 @@ export default function ContactPage() {
                 </motion.h1>
                 <motion.p
                   className="text-[#aaa]"
-                  style={{ fontSize: "16px", fontWeight: 400, lineHeight: "20.15px", maxWidth: "400px" }}
+                  style={{ fontSize: isMobile ? "14px" : "16px", fontWeight: 400, lineHeight: "20.15px", maxWidth: "400px" }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.15 }}
@@ -125,7 +126,7 @@ export default function ContactPage() {
                     label: "Membership",
                     content: (
                       <Link
-                        to="/become-a-member"
+                        to="/join"
                         className="inline-flex items-center gap-2 text-[#EA1528] hover:underline"
                         style={{ fontSize: "14px", fontWeight: 400, lineHeight: "19.5px" }}
                       >
@@ -154,7 +155,7 @@ export default function ContactPage() {
 
             {/* Bottom note */}
             <motion.p
-              className="relative z-10 text-[#444]"
+              className="relative z-10 text-[#444] pt-[30px] md:pt[0px]"
               style={{ fontSize: "12px", fontWeight: 400, lineHeight: 1.6 }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -170,7 +171,7 @@ export default function ContactPage() {
         <div
           ref={formRef}
           className="bg-white flex flex-col justify-center px-6 py-12 md:px-12 md:py-16 lg:px-[64px] lg:pr-[80px] lg:py-[143px]"
-          style={{ minHeight: "849px" }}
+          style={{ minHeight: isMobile ? "auto" : "849px" }}
         >
           {submitted ? (
             <motion.div
@@ -193,7 +194,7 @@ export default function ContactPage() {
                   We'll be in touch within one business day. Looking to join the
                   network?{" "}
                   <Link
-                    to="/become-a-member"
+                    to="/join"
                     className="text-[#EA1528] underline underline-offset-2 hover:no-underline transition-all"
                   >
                     Apply for membership here.
@@ -203,11 +204,11 @@ export default function ContactPage() {
             </motion.div>
           ) : (
             <motion.div
-              className="w-full max-w-[520px]"
+              className="w-full"
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-              style={{ paddingTop: "36px" }}
+              style={{ paddingTop: isMobile ? "0px" : "36px" }}
             >
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                 {/* Name + Email */}
@@ -265,7 +266,7 @@ export default function ContactPage() {
                   <p className="text-[#999]" style={{ fontSize: "12px", fontWeight: 400, lineHeight: "19.2px" }}>
                     Looking to join?{" "}
                     <Link
-                      to="/become-a-member"
+                      to="/join"
                       className="text-[#111642] underline underline-offset-2 hover:text-[#EA1528] transition-colors"
                     >
                       Apply for membership

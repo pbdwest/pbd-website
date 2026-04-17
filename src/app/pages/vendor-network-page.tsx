@@ -6,35 +6,30 @@ import { Navbar } from "../components/navbar";
 import { FooterSection } from "../components/footer-section";
 import { ContactFormSection } from "../components/contact-form-section";
 import { LogoCloudSection } from "../components/logo-cloud-section";
+import tlConvenienceValet from "../../assets/image 1748.png";
+import tlBalanceBar from "../../assets/image 1749.png";
+import tlFijiWater from "../../assets/image 1781.png";
+import tlMonster from "../../assets/image 1782.png";
+import tlGeneralMills from "../../assets/logo.png";
+import tl7Up from "../../assets/logo (1).png";
+import tlTobaccoBackbar from "../../assets/logo (3).png";
+import tlVenomEnergy from "../../assets/logo (2).png";
+import heroCompositeImg from "../../assets/image 1745.png";
+import coreMarkImg from "../../assets/ImageWithFallback (1).png";
+import whyImg0 from "../../assets/image 1761.png";
+import whyImg1 from "../../assets/image 1762.png";
+import whyImg2 from "../../assets/image 1763.png";
+import whyImg3 from "../../assets/image 1764.png";
+import retailersImg from "../../assets/Container.png";
+import ctaBgImg from "../../assets/CTASection.png";
+import { useIsMobile } from "../components/ui/use-mobile";
 // Timeline brand logos — new card design (Figma node 5789-799)
-const tlConvenienceValet = "https://www.figma.com/api/mcp/asset/63cba3b8-d956-4060-ad8d-f7e93e475dc2";
-const tlBalanceBar       = "https://www.figma.com/api/mcp/asset/b0317d5b-6d20-4468-abc6-86dd5c6682df";
-// Remaining brand logos from Figma node 5761-604
-const tlFijiWater        = "https://www.figma.com/api/mcp/asset/8e7392b1-b238-4825-8d31-2fe620cf85fa";
-const tlMonster          = "https://www.figma.com/api/mcp/asset/dec40f34-5f55-4ffb-b6d9-f0017e534d68";
-const tlGeneralMills     = "https://www.figma.com/api/mcp/asset/852f5ca6-63a8-4d4b-8380-f88c53e9ac0f";
-const tl7Up              = "https://www.figma.com/api/mcp/asset/ab00c56e-08d7-499b-b4f0-c32472ada524";
-const tlTobaccoBackbar   = "https://www.figma.com/api/mcp/asset/916eeffb-a9f8-4856-bc90-3f8668cbe7f4";
-const tlVenomEnergy      = "https://www.figma.com/api/mcp/asset/19ee420a-268a-453e-825f-f59cf0ffaa36";
-// Hero composite image from Figma (node 5755-567)
-const heroCompositeImg =
-  "https://www.figma.com/api/mcp/asset/1778b31e-5f83-40d4-a4ca-053add9d50a3";
-
-// Core-Mark story image from Figma (expires in 7 days — replace with a local asset later)
-const coreMarkImg =
-  "https://www.figma.com/api/mcp/asset/42921a68-d840-4854-8fc8-24761e9b43c4";
-
-// Why Vendors section — right panel images from Figma node 5768-4420
-const whyImg0 = "https://www.figma.com/api/mcp/asset/653b15fd-28f8-417b-b778-2e90d4f6b93f"; // Network Access
-const whyImg1 = "https://www.figma.com/api/mcp/asset/71a8b9a1-800e-4bc4-aed3-b5476e3112a4"; // Execute Programs
-const whyImg2 = "https://www.figma.com/api/mcp/asset/a1946029-5a7e-4319-9a8a-cc0cb7fac0ce"; // Program Accountability
-const whyImg3 = "https://www.figma.com/api/mcp/asset/48be4c62-d956-4d80-9d6a-8b068ddbadd5"; // Growth Partnership
 
 // ─── 1. Hero — matches Programs / How It Works pattern ───────────────────────
 function VendorNetworkHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -42,7 +37,7 @@ function VendorNetworkHero() {
       style={{ fontFamily: "'Inter', sans-serif", paddingTop: "79px" }}
       data-navbar-theme="dark"
     >
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[80px] py-16 md:py-20">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[40px] md:gap-[80px] py-[40px] md:py-20">
         {/* Top Row: Headline + Description */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-[20px] items-end">
           {/* Headline */}
@@ -55,13 +50,13 @@ function VendorNetworkHero() {
             <h1
               className="text-white"
               style={{
-                fontSize: "clamp(40px, 6vw, 64px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(40px, 6vw, 64px)",
                 fontWeight: 400,
                 lineHeight: 1.05,
                 letterSpacing: "-0.03em",
               }}
             >
-              Built on Long-Term Vendor Partnerships.
+              Built on decades of vendor relationships that drive real results
             </h1>
           </motion.div>
 
@@ -80,9 +75,7 @@ function VendorNetworkHero() {
                 lineHeight: 1.6,
               }}
             >
-              PBD's vendor network wasn't built overnight. It was forged over
-              three decades of working alongside the biggest brands and
-              distributors in convenience retail.
+              PBD's network is built on long-standing relationships with national vendors and distributors, allowing independent retailers to access programs, pricing, and funding typically reserved for large chains.
             </p>
           </motion.div>
         </div>
@@ -97,8 +90,8 @@ function VendorNetworkHero() {
           <img
             src={heroCompositeImg}
             alt="Vendor Network — three-panel hero"
-            className="w-full object-cover"
-            style={{ height: "405px", objectPosition: "center" }}
+            className="w-full md:object-cover object-contain"
+            style={{ height: isMobile ? "auto" : "405px", objectPosition: "center" }}
           />
         </motion.div>
       </div>
@@ -182,14 +175,14 @@ function VendorStatsSection() {
 function PartnershipStorySection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="bg-white"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] py-[80px] flex flex-col gap-[56px]">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] md:py-[80px] py-[40px] flex flex-col gap-[30px] md:gap-[56px]">
         {/* Section Header */}
         <div className="flex flex-col gap-6">
           <motion.p
@@ -206,7 +199,7 @@ function PartnershipStorySection() {
             <motion.h2
               className="text-[#111642] flex-1"
               style={{
-                fontSize: "clamp(32px, 4vw, 48px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
                 fontWeight: 400,
                 lineHeight: 1.1,
                 letterSpacing: "-0.03em",
@@ -225,7 +218,7 @@ function PartnershipStorySection() {
 
         {/* Image + Body copy — 2 column grid */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-[64px]"
+          className="grid grid-cols-1 lg:grid-cols-2 md:gap-[64px] gap-[32px]"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
@@ -259,21 +252,15 @@ function PartnershipStorySection() {
             <div className="flex flex-col gap-6">
               <p
                 className="text-[#525252]"
-                style={{ fontSize: "16px", fontWeight: 400, lineHeight: 1.6 }}
+                style={{ fontSize: isMobile ? "14px" : "16px", fontWeight: 400, lineHeight: 1.6 }}
               >
-                In the early 1990s, PBD entered into a strategic distribution
-                agreement with Core-Mark during a pivotal period in the
-                company's history. The agreement helped Core-Mark restructure
-                and reposition its business within the convenience retail
-                industry.
+                In the early 1990s, PBD entered into a strategic relationship with Core-Mark during a pivotal period in the company's history, helping support its restructuring and repositioning within the convenience retail industry.
               </p>
               <p
                 className="text-[#525252]"
                 style={{ fontSize: "16px", fontWeight: 400, lineHeight: 1.6 }}
               >
-                In the years that followed, Core-Mark grew into one of the
-                largest convenience retail distributors in the United States.
-                The partnership with PBD continues today.
+                Today, Core-Mark is one of the largest convenience distributors in the United States, and the partnership with PBD continues.
               </p>
             </div>
 
@@ -282,14 +269,12 @@ function PartnershipStorySection() {
               <p
                 className="text-[#222]"
                 style={{
-                  fontSize: "16px",
+                  fontSize: isMobile ? "14px" : "16px",
                   fontWeight: 500,
                   lineHeight: 1.75,
                 }}
               >
-                This wasn't a vendor listing or a logo on a website. PBD
-                played an active role in helping shape the trajectory of one
-                of the industry's most important distribution companies.
+                This wasn't a passive relationship. PBD played an active role in supporting one of the industry's most important distribution companies.
               </p>
             </div>
           </div>
@@ -302,60 +287,67 @@ function PartnershipStorySection() {
 // ─── 4. Vendor Timeline — horizontal scroll on vertical input ─────────────────
 const timelineItems = [
   {
-    year: "1990",
-    brand: "Balance Bar",
-    body: "PBD supported Balance Bar's entry into convenience retail before the energy bar category reached mainstream scale — helping introduce a new snacking format to a channel more familiar with candy bars.",
-    img: tlBalanceBar,
-    imgAlt: "Balance Bar logo",
-  },
-  {
     year: "1994",
     brand: "Convenience Valet",
-    body: "PBD helped launch Convenience Valet across its independent retail network, bringing a curated over-the-counter health and personal care assortment to c-stores at a price point designed for the channel.",
+    body: "Helped launch and scale a curated health and personal care program across independent retailers, proving the concept in key Western markets and supporting national expansion.",
     img: tlConvenienceValet,
     imgAlt: "Convenience Valet logo",
   },
   {
     year: "1996",
+    brand: "Balance Bar",
+    body: "Recognized early potential in convenience and supported packaging, pricing, merchandising, and distribution strategy to successfully introduce the category to the channel.",
+    img: tlBalanceBar,
+    imgAlt: "Balance Bar logo",
+  },
+  {
+    year: "1996",
     brand: "FIJI Water",
-    body: "PBD supported the early introduction of FIJI Water into convenience retail, including the launch of a half-liter bottle designed specifically for the channel. FIJI later became one of the most recognised premium water brands in the world.",
+    body: "Supported a relaunch into convenience with a new package size and value price point, helping validate the product and drive national rollout.",
     img: tlFijiWater,
     imgAlt: "FIJI Water logo",
   },
   {
-    year: "Late 1990s",
+    year: "1998",
     brand: "Monster Energy",
-    body: "PBD identified Monster early and helped introduce the brand into convenience retail through its network of stores. Monster Energy went on to become one of the most successful beverage brands in the industry.",
+    body: "We identified it early and helped get it into stores and grow before the energy category reached scale, becoming the first chain to put Monster on the shelf west of the Mississippi.",
     img: tlMonster,
     imgAlt: "Monster Energy logo",
   },
   {
-    year: "Late 1990s",
+    year: "1998",
     brand: "General Mills",
-    body: "PBD supported the launch of General Mills' first convenience-focused product line, introducing it across hundreds of independent retail locations.",
+    body: "Helped bring General Mills' convenience-focused product line into market across member stores, supporting early adoption in key regions.",
     img: tlGeneralMills,
     imgAlt: "General Mills logo",
   },
   {
-    year: "2003",
-    brand: "7Up Value Strategy",
-    body: "PBD worked with 7Up to introduce a value-priced 20oz strategy designed to increase trial and drive higher sales velocity in convenience retail.",
-    img: tl7Up,
-    imgAlt: "7Up logo",
-  },
-  {
-    year: "Early 2000s",
+    year: "2000",
     brand: "Tobacco Backbar",
-    body: "PBD developed and deployed one of the first large-scale tobacco backbar merchandising systems, replacing overhead cigarette racks and improving product visibility. This format later became an industry standard.",
+    body: "Developed and deployed large-scale tobacco backbar programs, introducing new merchandising standards and improving product visibility and pricing structure.",
     img: tlTobaccoBackbar,
     imgAlt: "Tobacco backbar logo",
   },
   {
-    year: "Mid-2000s",
+    year: "2003",
+    brand: "7Up Value Strategy",
+    body: "Advised on product positioning and value pricing strategy, becoming one of the first networks to distribute the new package size in convenience.",
+    img: tl7Up,
+    imgAlt: "7Up logo",
+  },
+  {
+    year: "2005",
     brand: "Venom Energy",
-    body: "PBD supported the launch of Venom Energy as a value-focused energy drink for the convenience channel. The product gained strong traction with independent retailers.",
+    body: "Helped position and validate a value-driven energy product in convenience, supporting early distribution and category expansion.",
     img: tlVenomEnergy,
     imgAlt: "Venom Energy logo",
+  },
+  {
+    year: "2006",
+    brand: "Juul",
+    body: "Supported early proof-of-concept in convenience through store-level execution, display strategy, and targeted distribution.",
+    img: "https://www.figma.com/api/mcp/asset/7180e94d-8361-4c82-9442-1d41eae3eb0b",
+    imgAlt: "Juul logo",
   },
 ];
 
@@ -400,7 +392,7 @@ function VendorTimelineSection() {
 
   // Header fade-in
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     // Outer: tall enough to provide the scroll distance for pinning
     <div
@@ -416,7 +408,7 @@ function VendorTimelineSection() {
         className="sticky top-0 overflow-hidden bg-[#fafafa]"
       >
         {/* Header — constrained + padded, same as every other section */}
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] pt-[80px]">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] md:pt-[80px] pt-[40px]">
           <div ref={headerRef} className="mb-[80px]">
             <motion.p
               className="text-[#999] uppercase tracking-[0.14em] mb-5"
@@ -431,7 +423,7 @@ function VendorTimelineSection() {
               <motion.h2
                 className="text-[#0a0a0a] flex-1"
                 style={{
-                  fontSize: "clamp(28px, 3.5vw, 48px)",
+                  fontSize: isMobile ?  "clamp(22px, 3vw, 32px)" : "clamp(28px, 3.5vw, 48px)",
                   fontWeight: 400,
                   lineHeight: 1.1,
                   letterSpacing: "-0.03em",
@@ -444,7 +436,7 @@ function VendorTimelineSection() {
                 animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.65, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                Three decades of helping brands<br />break into convenience retail.
+                Helping brands grow in convenience retail for over 30 years
               </motion.h2>
               <motion.p
                 className="text-[#aaa] shrink-0 hidden lg:block"
@@ -456,6 +448,15 @@ function VendorTimelineSection() {
                 Scroll to explore →
               </motion.p>
             </div>
+            <motion.p
+              className="text-[#555] max-w-[640px] mt-4"
+              style={{ fontSize: isMobile ? "14px" : "16px", fontWeight: 400, lineHeight: 1.6 }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.3, ease: "easeOut" }}
+            >
+              PBD has worked alongside emerging and established brands to introduce, position, and scale products within the convenience channel, long before many categories reached mainstream adoption.
+            </motion.p>
           </div>
         </div>
 
@@ -529,7 +530,7 @@ function VendorTimelineSection() {
         </div>
 
         {/* Progress bar — also padded consistently */}
-        <div className="px-6 md:px-10 lg:px-[80px] pb-[80px]">
+        <div className="px-6 md:px-10 lg:px-[80px] md:pb-[80px] pb-[40px]">
           <div className="mt-[56px] h-px bg-[#e5e5e5] relative">
             <motion.div
               className="absolute left-0 top-0 h-full bg-[#ec2c3e]"
@@ -548,23 +549,23 @@ function VendorTimelineSection() {
 const whyItems = [
   {
     title: "Network Access",
-    body: "Access a coordinated network of independent c-stores, gas stations, and truck stops across 20+ states. One partnership gives you distribution across hundreds of locations — without managing each store relationship individually.",
+    body: "Access a coordinated network of independent c-stores, gas stations, and truck stops across 20+ states through a single relationship.",
     tags: ["20+ states", "300+ Locations", "Single Point of Contact"],
     stat: "20+",
     statLabel: "States covered",
     img: whyImg0,
   },
   {
-    title: "Execute Programs",
-    body: "PBD doesn't just list programs — we execute them at store level. Category resets, merchandising implementation, and promotional activation are managed hands-on. Your programs actually run.",
+    title: "Program Execution",
+    body: "Ensure pricing, promotions, and merchandising are implemented consistently across hundreds of locations.",
     tags: ["Category Resets", "In-Store Activation", "Planogram Compliance"],
     stat: "100+",
     statLabel: "Locations across the United States",
     img: whyImg1,
   },
   {
-    title: "Program Accountability",
-    body: "PBD's technology platform tracks program participation, reconciles distributor data, and provides transparent reporting on performance across the network. No guesswork — verified sell-through.",
+    title: "Performance and Accountability",
+    body: "Track participation, measure results, and improve program effectiveness across the network.",
     tags: ["Distributor Data", "Program Tracking", "Transparent Reporting"],
     stat: "100%",
     statLabel: "Transparent reporting",
@@ -572,7 +573,7 @@ const whyItems = [
   },
   {
     title: "Growth Partnership",
-    body: "From launching new products to testing merchandising strategies — PBD has helped brands like Monster, FIJI, and Balance Bar establish themselves in convenience retail. We're not a middleman; we're a launch partner.",
+    body: "Work with a partner focused on driving volume, expanding distribution, and improving long-term performance.",
     tags: ["Product Launches", "Brand Strategy", "Long-Term Relationships"],
     stat: "30+",
     statLabel: "Years of brand launches",
@@ -585,7 +586,7 @@ function WhyVendorsSection() {
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
   const [activeIndex, setActiveIndex] = useState(0);
   const active = whyItems[activeIndex];
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -606,11 +607,11 @@ function WhyVendorsSection() {
           >
             For Vendors
           </motion.p>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[64px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-[64px] gap-[32px]">
             <motion.h2
               className="text-white"
               style={{
-                fontSize: "clamp(32px, 4vw, 48px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
                 fontWeight: 400,
                 lineHeight: 1.1,
                 letterSpacing: "-0.03em",
@@ -628,9 +629,7 @@ function WhyVendorsSection() {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
-              Independent convenience stores and truck stops represent a massive
-              market, but it's fragmented, hard to coordinate, and nearly
-              impossible to activate at scale without a network. PBD solves that.
+              Independent convenience is fragmented, difficult to coordinate, and nearly impossible to activate at scale without a structured network. PBD solves that.
             </motion.p>
           </div>
         </div>
@@ -691,7 +690,7 @@ function WhyVendorsSection() {
                       initial={false}
                       animate={isActive ? { y: 0, opacity: 1 } : { y: 8, opacity: 0 }}
                       transition={{ duration: 0.35, delay: isActive ? 0.08 : 0, ease: "easeOut" }}
-                      className="pl-[18px] pb-6"
+                      className="md:pl-[18px] pb-6"
                     >
                       <p
                         className="text-[#d4d4d4] mb-4"
@@ -748,26 +747,25 @@ function WhyVendorsSection() {
 
 // ─── 6. For Retailers ─────────────────────────────────────────────────────────
 // Figma node 5768-3957
-const retailersImg = "https://www.figma.com/api/mcp/asset/eaffff43-17eb-4fe9-80af-d0ef97b2997d";
 
 const retailerBullets = [
-  "National vendor promotional programs backed by brands that trust PBD",
-  "Vendor rebate opportunities tied to real product performance",
-  "Category management informed by decades of retail data",
-  "Merchandising programs developed alongside the brands themselves",
+  "Access to national vendor programs backed by trusted brands",
+  "Rebate opportunities tied to real product performance",
+  "Category management built on real retail experience",
+  "Merchandising programs developed with vendor partners",
 ];
 
 function ForRetailersSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="bg-white"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] py-[80px] flex flex-col gap-[56px]">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] md:py-[80px] py-[40px] flex flex-col gap-[30px] md:gap-[56px]">
 
         {/* ── Header ── */}
         <div className="flex flex-col gap-6">
@@ -781,11 +779,11 @@ function ForRetailersSection() {
             For Retailers
           </motion.p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[64px] items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-[64px] gap-[32px] items-start">
             <motion.h2
               className="text-[#111642]"
               style={{
-                fontSize: "clamp(32px, 4vw, 48px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" :  "clamp(32px, 4vw, 48px)",
                 fontWeight: 400,
                 lineHeight: 1.1,
                 letterSpacing: "-0.03em",
@@ -799,15 +797,12 @@ function ForRetailersSection() {
 
             <motion.p
               className="text-[#555]"
-              style={{ fontSize: "16px", fontWeight: 400, lineHeight: 1.6 }}
+              style={{ fontSize: isMobile ? "14px" : "16px", fontWeight: 400, lineHeight: 1.6 }}
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
-              Every vendor relationship in the PBD network was built through
-              years of real collaboration. These aren't cold partnerships.
-              They're the reason PBD members get access to programs that
-              independent stores can't access on their own.
+              Every vendor relationship in the PBD network was built through years of real collaboration. These relationships give PBD members access to programs, pricing, and funding that independent stores can't access on their own.
             </motion.p>
           </div>
         </div>
@@ -888,12 +883,11 @@ function ForRetailersSection() {
 }
 
 // ─── 7. CTA Banner — Figma node 5775-1257 ────────────────────────────────────
-const ctaBgImg = "https://www.figma.com/api/mcp/asset/b48be672-9029-465f-9c94-d265b0cfaca3";
 
 function CTABannerSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
@@ -903,10 +897,10 @@ function CTABannerSection() {
     >
       {/* LEFT — navy→blue gradient with dot-grid bg image */}
       <motion.div
-        className="relative flex-1 overflow-hidden flex flex-col justify-between px-[80px] py-[32px] gap-8"
+        className="relative flex-1 overflow-hidden flex flex-col justify-between md:px-[80px] px-[24px] py-[32px] gap-8"
         style={{
           background: "linear-gradient(to bottom, #111642, #2b38a8)",
-          minHeight: "343px",
+          minHeight:  isMobile ? "auto" : "343px",
         }}
         initial={{ opacity: 0, y: 24 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -929,21 +923,15 @@ function CTABannerSection() {
           <h3
             className="text-white"
             style={{
-              fontSize: "clamp(28px, 3.2vw, 42px)",
+              fontSize: isMobile ?  "clamp(22px, 3vw, 32px)" : "clamp(28px, 3.2vw, 42px)",
               fontWeight: 500,
               lineHeight: 1.1,
               letterSpacing: "-0.04em",
               maxWidth: "540px",
             }}
           >
-            Join the PBD network and start earning vendor rebates.
+            Join the PBD network and start accessing vendor programs, pricing, and rebates.
           </h3>
-          <p
-            className="text-white/80"
-            style={{ fontSize: "16px", fontWeight: 400, lineHeight: 1.5, maxWidth: "580px" }}
-          >
-            Apply to become a member and get access to national vendor programs
-          </p>
         </div>
 
         <Link
@@ -958,10 +946,10 @@ function CTABannerSection() {
 
       {/* RIGHT — bright lavender panel */}
       <motion.div
-        className="relative flex flex-col justify-between overflow-hidden px-[32px] lg:px-[80px] py-[32px]"
+        className="relative flex flex-col justify-between overflow-hidden px-[32px] lg:px-[80px] py-[32px] gap-8 md:gap-0"
         style={{
           backgroundColor: "#e3dcfb",
-          minHeight: "343px",
+          minHeight: isMobile ? "auto" : "343px",
           flexShrink: 0,
           flexBasis: "clamp(320px, 42%, 595px)",
         }}
@@ -971,7 +959,7 @@ function CTABannerSection() {
       >
         <h3
           style={{
-            fontSize: "clamp(28px, 3.2vw, 42px)",
+            fontSize: isMobile ?  "clamp(22px, 3vw, 32px)" : "clamp(28px, 3.2vw, 42px)",
             fontWeight: 500,
             lineHeight: 1.1,
             letterSpacing: "-0.04em",
@@ -979,7 +967,7 @@ function CTABannerSection() {
             maxWidth: "480px",
           }}
         >
-          Partner with PBD to reach independent retailers at scale.
+          Partner with PBD to reach independent retailers <br />at scale.
         </h3>
 
         <Link
@@ -1001,7 +989,7 @@ export default function VendorNetworkPage() {
     <div className="size-full">
       <Navbar />
       <VendorNetworkHero />
-      <VendorStatsSection />
+      {/* VendorStatsSection hidden for this page */}
       <PartnershipStorySection />
       <VendorTimelineSection />
       <WhyVendorsSection />

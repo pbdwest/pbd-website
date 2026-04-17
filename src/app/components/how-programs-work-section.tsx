@@ -1,39 +1,41 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
+import imgImage1736 from "../../assets/I1.png";
+import imgImage1737 from "../../assets/I2.png";
+import imgImage1738 from "../../assets/I3.png";
+import imgImage1739 from "../../assets/I4.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 // One unique image per step — from Figma
-const imgImage1736 = "https://www.figma.com/api/mcp/asset/ae733419-1482-414c-ba81-e2e2ca79ae23";
-const imgImage1737 = "https://www.figma.com/api/mcp/asset/89da0fc2-6d44-4205-af50-c53bbe2e0ed1";
-const imgImage1738 = "https://www.figma.com/api/mcp/asset/5309b3e7-e1fa-4b6c-ae86-e2eb944abceb";
-const imgImage1739 = "https://www.figma.com/api/mcp/asset/75a3d9ba-3f66-4af8-80b8-e505b9203181";
+
 
 const steps = [
   {
     step: "01",
-    title: "Apply",
-    description: "Submit your application. PBD reviews your store's size, location, and categories.",
+    title: "Apply to Join",
+    description: "Submit your store information and we review your location, size, and product mix.",
     tags: ["Application", "Store review"],
     image: imgImage1736,
   },
   {
     step: "02",
-    title: "Qualify",
-    description: "PBD evaluates volume potential. Qualifying stores enter the Jumpstart Program.",
-    tags: ["Volume check", "Jumpstart Program"],
+    title: "Evaluate the Store",
+    description: "We assess your categories, pricing, and vendor participation to identify opportunities.",
+    tags: ["Category review", "Vendor assessment"],
     image: imgImage1737,
   },
   {
     step: "03",
-    title: "Get set up",
-    description: "PBD invests in your store — category resets, vendor activation, hands-on support.",
-    tags: ["Store category resets", "Vendor activation", "Support"],
+    title: "Activate and Implement",
+    description: "Vendor programs are activated, pricing is aligned, and your store is prepared for execution.",
+    tags: ["Vendor activation", "Pricing alignment"],
     image: imgImage1738,
   },
   {
     step: "04",
-    title: "Earn",
-    description: "Sell qualifying products, generate rebates. PBD tracks and pays you monthly.",
-    tags: ["Monthly rebates", "Direct Payments"],
+    title: "Generate Results",
+    description: "Your store begins producing rebates, improving pricing, and driving performance across key categories.",
+    tags: ["Monthly rebates", "Performance"],
     image: imgImage1739,
   },
 ];
@@ -42,14 +44,14 @@ export function HowProgramsWorkSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="bg-[#111642]"
-      style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
+      style={{ fontFamily: "'Inter', sans-serif", padding: isMobile ? "40px 0" : "80px 0" }}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[56px]">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col md:gap-[56px] gap-[30px]">
 
         {/* Header */}
         <div className="flex flex-col gap-4">
@@ -65,7 +67,7 @@ export function HowProgramsWorkSection() {
           <motion.p
             className="text-white"
             style={{
-              fontSize: "clamp(32px, 3.5vw, 48px)",
+              fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 3.5vw, 48px)",
               fontWeight: 400,
               lineHeight: 1.1,
               letterSpacing: "-1.44px",
@@ -132,7 +134,7 @@ export function HowProgramsWorkSection() {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="pl-[18px] pb-5 flex flex-col gap-[16px]">
+                        <div className="md:pl-[18px] pb-5 flex flex-col gap-[16px]">
                           {/* Description */}
                           <p
                             className="text-[#d4d4d4]"

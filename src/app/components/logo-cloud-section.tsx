@@ -6,16 +6,21 @@ import PepsiLogo from "../../imports/PepsiLogo";
 import coreMarkImg from "figma:asset/76ae85636fb2e8ca4563996d77720afdc1ab84bb.png";
 import farmerBrothersImg from "figma:asset/d5513c3625609331d9b0a53c18b8e0e4b9796dd7.png";
 import monsterEnergyImg from "figma:asset/02b6b1430d604c3e159615c7ea356acbfb8d6d36.png";
+import logo1775 from "../../assets/logo-1775.svg";
+import logo1776 from "../../assets/logo-1776.svg";
+import logo1777 from "../../assets/logo-1777.svg";
+import logo1780 from "../../assets/logo-1780.svg";
+import { useIsMobile } from "./ui/use-mobile";
 
 export function LogoCloudSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="bg-[#FAFAFA]"
-      style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
+      style={{ fontFamily: "'Inter', sans-serif", padding: isMobile ? "40px 0" : "80px 0" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px]">
         {/* "Trusted Brands Trust Us" Tag */}
@@ -26,7 +31,7 @@ export function LogoCloudSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          Trusted Brands Trust Us
+          Trusted by Leading Brands
         </motion.p>
 
         {/* Logo slider */}
@@ -76,6 +81,42 @@ export function LogoCloudSection() {
               <img
                 src={monsterEnergyImg}
                 alt="Monster Energy"
+                className="h-8 md:h-10 w-auto object-contain pointer-events-none select-none opacity-70"
+              />
+            </div>
+
+            {/* Logo 1775 */}
+            <div className="flex items-center shrink-0">
+              <img
+                src={logo1775}
+                alt="Brand Partner"
+                className="h-8 md:h-10 w-auto object-contain pointer-events-none select-none opacity-70"
+              />
+            </div>
+
+            {/* Logo 1776 */}
+            <div className="flex items-center shrink-0">
+              <img
+                src={logo1776}
+                alt="Brand Partner"
+                className="h-8 md:h-10 w-auto object-contain pointer-events-none select-none opacity-70"
+              />
+            </div>
+
+            {/* Logo 1777 */}
+            <div className="flex items-center shrink-0">
+              <img
+                src={logo1777}
+                alt="Brand Partner"
+                className="h-8 md:h-10 w-auto object-contain pointer-events-none select-none opacity-70"
+              />
+            </div>
+
+            {/* Logo 1780 */}
+            <div className="flex items-center shrink-0">
+              <img
+                src={logo1780}
+                alt="Brand Partner"
                 className="h-8 md:h-10 w-auto object-contain pointer-events-none select-none opacity-70"
               />
             </div>

@@ -5,37 +5,38 @@ import applyImage from "figma:asset/7f8e78a0b6f2149e9344f681143d2c8df8e99fbb.png
 import qualifyImage from "figma:asset/089f3a5b94a579bae9fff7497c84ac1bf812282d.png";
 import investImage from "figma:asset/32135403af1c21277ca6f79a8751b845837b79d9.png";
 import earningImage from "figma:asset/0dd055c7d8ac7bc62f274845ec032161e5d5378a.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 const steps = [
   {
-    title: "Apply to join",
+    title: "Apply to Join",
     description:
-      "Submit your application. We review your store's location, size, and product categories to determine fit.",
-    tags: ["Application", "Store review"],
+      "Submit your store information and we review your location, size, and product mix.",
+    tags: ["Application", "Store Review"],
     step: "01",
     image: applyImage,
   },
   {
-    title: "Get qualified",
+    title: "Store Evaluation",
     description:
-      "PBD evaluates whether your store has the volume potential to benefit from national vendor programs. Not every store qualifies — by design.",
-    tags: ["Volume evaluation", "Qualification"],
+      "We identify opportunities across your categories, pricing, and vendor coverage.",
+    tags: ["Category Analysis", "Pricing Review", "Vendor Coverage"],
     step: "02",
     image: qualifyImage,
   },
   {
-    title: "PBD invests in you",
+    title: "Program Setup",
     description:
-      "Qualifying stores enter Jumpstart. PBD invests capital in your store — resetting categories, activating programs, and providing hands-on support.",
-    tags: ["Jumpstart Program", "Capital investment", "Support"],
+      "PBD activates vendor programs, completes resets, and connects your store to qualifying offers.",
+    tags: ["Program Activation", "Category Resets", "Vendor Offers"],
     step: "03",
     image: investImage,
   },
   {
-    title: "Start earning",
+    title: "Start Earning",
     description:
-      "Your store participates in vendor programs and earns monthly rebates. PBD tracks everything and deposits payments directly to you.",
-    tags: ["Monthly rebates", "Direct payment"],
+      "Your store begins generating rebates, improved pricing, and increased performance across key categories.",
+    tags: ["Monthly Rebates", "Improved Pricing", "Performance Tracking"],
     step: "04",
     image: earningImage,
   },
@@ -45,13 +46,13 @@ export function ProgramsProcessSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const isMobile = useIsMobile();
   const activeStep = steps[activeIndex >= 0 ? activeIndex : 0];
 
   return (
     <section
       ref={sectionRef}
-      className="bg-white py-16 md:py-20"
+      className="bg-white py-[40px] md:py-20"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
@@ -60,7 +61,7 @@ export function ProgramsProcessSection() {
           className="text-[#888] uppercase tracking-[0.15em] mb-6"
           style={{ fontSize: "0.7rem", fontWeight: 500 }}
         >
-          The Process
+          HOW IT WORKS
         </p>
 
         {/* Top Row: Headline left */}
@@ -68,7 +69,7 @@ export function ProgramsProcessSection() {
           <motion.h2
             className="text-[#111642] max-w-[520px]"
             style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
+              fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" :  "clamp(32px, 4vw, 48px)",
               fontWeight: 400,
               lineHeight: 1.1,
               letterSpacing: "-0.03em",
@@ -77,7 +78,7 @@ export function ProgramsProcessSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            From application to earning rebates
+            Simple, structured, and fully managed.
           </motion.h2>
         </div>
 
@@ -133,7 +134,7 @@ export function ProgramsProcessSection() {
                         transition={{ duration: 0.35, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-5 pl-[18px]">
+                        <div className="pb-5 md:pl-[18px]">
                           <p
                             className="text-[#444] mb-4 max-w-[440px]"
                             style={{

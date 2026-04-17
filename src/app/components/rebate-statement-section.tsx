@@ -60,7 +60,7 @@ export function RebateStatementSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#111642] overflow-hidden"
+      className="relative bg-[#111642] overflow-hidden hidden"
       style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[40px] items-center">

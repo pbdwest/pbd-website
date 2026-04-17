@@ -1,51 +1,40 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import storeImage from "../../assets/ImageWithFallback.png";
+import { useIsMobile } from "./ui/use-mobile";
 
-const storeImage = "https://www.figma.com/api/mcp/asset/c8141e6d-977d-4298-89f4-0c42adb44c42";
 
 const phases = [
   {
     label: "FIRST 30 DAYS",
-    title: "You sell qualifying products",
+    title: "Align",
     bullets: [
-      "Migrating pricing to national programs",
-      "Tracking volume baselines",
-      "Accruing rebate payments by participation level",
-      "Setting up scan data & loyalty reporting",
+      "Establish pricing, activate vendor programs, and begin building participation across key categories.",
     ],
     image: storeImage,
   },
   {
     label: "NEXT 30 DAYS",
-    title: "Assess & Order",
+    title: "Prepare",
     bullets: [
-      "Onsite assessment by PBD consultant",
-      "Competitive pricing environment analysis",
-      "Equipment ordering and installation",
-      "Vendor program confirmation",
+      "Evaluate your store, confirm vendor programs, and coordinate equipment, layout, and implementation plans.",
     ],
     image: storeImage,
   },
   {
     label: "NEXT 30 DAYS",
-    title: "Reset & Implement",
+    title: "Execute",
     bullets: [
-      "Hands-on consulting in your store",
-      "Full category implementation",
-      "Store reset — beverage, tobacco, snacks, GM",
-      "Promotional signage installed",
+      "Complete full category resets, implement planograms, and install promotional signage across the store.",
     ],
     image: storeImage,
   },
   {
-    label: "WHATS NEXT",
-    title: "Drive & Retrain",
+    label: "FINAL PHASE",
+    title: "Drive Results",
     bullets: [
-      "Aggressive promotions go live",
-      "Deals designed to retrain customer behavior",
-      "Drive new foot traffic through vendor campaigns",
-      "Monthly rebate payments begin",
+      "Promotions go live, vendor programs are fully active, and your store begins generating traffic, sales, and rebate income.",
     ],
     image: storeImage,
   },
@@ -75,16 +64,16 @@ export function VendorRebatesSection() {
 
   const progressPercent = (activeStep / (phases.length - 1)) * 100;
   const anchorPercents = phases.map((_, i) => (i / (phases.length - 1)) * 100);
-
+  const isMobile = useIsMobile();
   return (
     <div
       ref={outerRef}
-      className="relative"
-      style={{ height: `${phases.length * 100}vh` }}
+      className="relative h-auto lg:h-[var(--vendor-section-height)]"
+      style={{ ["--vendor-section-height" as string]: `${phases.length * 100}vh` }}
     >
       {/* Sticky inner panel */}
       <div
-        className="sticky top-0 h-screen overflow-hidden bg-[#FAFAFA] flex flex-col justify-center"
+        className="relative lg:sticky lg:top-0 min-h-screen lg:h-screen overflow-hidden bg-[#FAFAFA] flex flex-col justify-center py-12 lg:py-0"
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
         <div className="max-w-[1440px] mx-auto w-full px-6 md:px-10 lg:px-[80px] flex flex-col gap-[56px]">
@@ -100,7 +89,7 @@ export function VendorRebatesSection() {
             <motion.h2
               className="text-[#0a0a0a]"
               style={{
-                fontSize: "clamp(32px, 4vw, 48px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
                 fontWeight: 400,
                 lineHeight: 1.1,
                 letterSpacing: "-0.03em",
@@ -118,7 +107,7 @@ export function VendorRebatesSection() {
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-14">
 
             {/* Left: progress track + phase steps */}
-            <div className="flex-1 flex" style={{ gap: "42px" }}>
+            <div className="flex-1 flex" style={{ gap: isMobile ? "22px" : "42px" }}>
               {/* Vertical progress track */}
               <div className="relative flex-shrink-0" style={{ width: "2px" }}>
                 <div className="absolute inset-0 bg-[#111642]/10" />
@@ -132,17 +121,18 @@ export function VendorRebatesSection() {
                       top: `${pct}%`,
                       transform: "translate(-50%, -50%)",
                       backgroundColor: activeStep >= i ? "#111642" : "rgba(17,22,66,0.2)",
+                      opacity: 0
                     }}
                   />
                 ))}
                 <motion.div
                   className="absolute top-0 left-0 w-full bg-[#ea1528]"
-                  animate={{ height: `${progressPercent}%` }}
+                  animate={{ height: isMobile ? '100%' : `${progressPercent}%` }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                 />
                 <motion.div
                   className="absolute"
-                  animate={{ top: `${progressPercent}%` }}
+                  animate={{ top: isMobile ? '0' : `${progressPercent}%` }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                   style={{
                     width: "10px",
@@ -155,14 +145,14 @@ export function VendorRebatesSection() {
               </div>
 
               {/* Phase steps */}
-              <div className="flex-1 flex flex-col" style={{ gap: "clamp(40px, 7vh, 70px)" }}>
+              <div className="flex-1 flex flex-col" style={{ gap: isMobile ? "clamp(20px, 4vh, 40px)" : "clamp(40px, 7vh, 70px)" }}>
                 {phases.map((phase, index) => {
                   const isPassed = activeStep >= index;
                   return (
                     <motion.div
                       key={phase.title}
                       className="flex flex-col gap-[8px]"
-                      animate={{ opacity: isPassed ? 1 : 0.3 }}
+                      animate={{ opacity: isPassed  || isMobile ? 1 : 0.3 }}
                       transition={{ duration: 0.4, ease: "easeOut" }}
                     >
                       <p
@@ -188,19 +178,16 @@ export function VendorRebatesSection() {
                       >
                         {phase.title}
                       </h3>
-                      <ul
-                        className="list-disc"
+                      <p
                         style={{
                           fontSize: "14px",
                           fontWeight: 400,
                           color: "#737373",
-                          paddingLeft: "21px",
+                          lineHeight: "26.4px",
                         }}
                       >
-                        {phase.bullets.map((b) => (
-                          <li key={b} style={{ lineHeight: "26.4px" }}>{b}</li>
-                        ))}
-                      </ul>
+                        {phase.bullets[0]}
+                      </p>
                     </motion.div>
                   );
                 })}
@@ -237,7 +224,7 @@ export function VendorRebatesSection() {
       </div>
 
       {/* Sentinels */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden>
+      <div className="absolute inset-0 pointer-events-none hidden lg:block" aria-hidden>
         {phases.map((_, index) => (
           <div
             key={index}

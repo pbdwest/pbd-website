@@ -1,19 +1,22 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "motion/react";
+import { useIsMobile } from "./ui/use-mobile";
 
 const stats = [
-  { value: 30, suffix: "%", label: "Increase in sales during Jumpstart" },
-  { value: 2, suffix: "X", label: "Your annual sales" },
-  { value: 500, suffix: "+", label: "Retail locations in the network" },
-  { value: 12, suffix: "M+", label: "In rebates distributed annually" },
+  { value: 30, prefix: "", suffix: "%", label: "Average sales increase driven by program execution, category resets, and vendor alignment" },
+  { value: 2, prefix: "", suffix: "X+", label: "Growth potential for top-performing stores through full program participation" },
+  { value: 400, prefix: "", suffix: "+", label: "Active store locations participating in national vendor programs across the network" },
+  { value: 100, prefix: "$", suffix: "M+", label: "In cumulative vendor rebates and funding delivered across the PBD network" },
 ];
 
 function CountUp({
   target,
+  prefix,
   suffix,
   isInView,
 }: {
   target: number;
+  prefix: string;
   suffix: string;
   isInView: boolean;
 }) {
@@ -37,8 +40,7 @@ function CountUp({
 
   return (
     <span className="font-bold text-[#292d55]">
-      {count}
-      {suffix}
+      {prefix}{count}{suffix}
     </span>
   );
 }
@@ -46,14 +48,14 @@ function CountUp({
 export function ProvenPerformanceSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="relative bg-[#FFFFFF]"
-      style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
+      style={{ fontFamily: "'Inter', sans-serif", padding: isMobile ? "40px 0" : "80px 0" }}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[56px]">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[30px] md:gap-[56px]">
 
         {/* Header: Label + Headline */}
         <div className="flex flex-col gap-6">
@@ -66,7 +68,7 @@ export function ProvenPerformanceSection() {
           <motion.h2
             className="text-[#0a0a0a] max-w-[520px]"
             style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
+              fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
               fontWeight: 400,
               lineHeight: 1.1,
               letterSpacing: "-0.03em",
@@ -80,7 +82,7 @@ export function ProvenPerformanceSection() {
         </div>
 
         {/* Stats Row: 4 columns with top border */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 lg:gap-x-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-y-12 gap-y-6 gap-x-8 lg:gap-x-12">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -96,7 +98,7 @@ export function ProvenPerformanceSection() {
               <span
                 className="text-[#0a0a0a] block mb-4"
                 style={{
-                  fontSize: "clamp(48px, 6vw, 72px)",
+                  fontSize: isMobile ?  "clamp(38px, 3vw, 32px)" : "clamp(48px, 6vw, 72px)",
                   fontWeight: 500,
                   lineHeight: 1,
                   letterSpacing: "-0.03em",
@@ -104,6 +106,7 @@ export function ProvenPerformanceSection() {
               >
                 <CountUp
                   target={stat.value}
+                  prefix={stat.prefix}
                   suffix={stat.suffix}
                   isInView={isInView}
                 />
@@ -111,7 +114,7 @@ export function ProvenPerformanceSection() {
               <p
                 className="text-[#555]"
                 style={{
-                  fontSize: "16px",
+                  fontSize: "14px",
                   fontWeight: 400,
                   lineHeight: 1.6,
                 }}

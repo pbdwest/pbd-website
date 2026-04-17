@@ -1,15 +1,16 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import imgImageWithFallback from "figma:asset/aff8ae7a81a4030f5a4de2351a33a9f20d1a0151.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 export function ProgramsResultsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
-      className="bg-[#111642] py-16 md:py-20"
+      className="bg-[#111642] py-[40px] md:py-20"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
@@ -28,7 +29,7 @@ export function ProgramsResultsSection() {
         <motion.h2
           className="text-white max-w-[520px] mb-10 md:mb-12"
           style={{
-            fontSize: "clamp(32px, 4vw, 48px)",
+            fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
             fontWeight: 400,
             lineHeight: 1.1,
             letterSpacing: "-0.03em",
@@ -73,13 +74,11 @@ export function ProgramsResultsSection() {
                 lineHeight: 1.7,
               }}
             >
-              PBD connects independent gas stations, convenience stores, and
-              truck stops with national vendor programs, merchandising support,
-              and promotional funding typically reserved for large chains.
+              Performance driven by program execution, category resets, and consistent participation across vendor programs.
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 px-[0px] pt-[177px] pb-[0px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 px-[0px] md:pt-[177px] pb-[0px]">
               {/* Stat 1 */}
               <motion.div
                 className="border-t border-[#292d55] pt-6"
@@ -106,7 +105,7 @@ export function ProgramsResultsSection() {
                     lineHeight: 1.6,
                   }}
                 >
-                  Increase in sales during Jumpstart
+                  Average increase in sales during<br />Jumpstart
                 </p>
               </motion.div>
 
@@ -126,7 +125,7 @@ export function ProgramsResultsSection() {
                     letterSpacing: "-0.03em",
                   }}
                 >
-                  2X
+                  2X–3X
                 </p>
                 <p
                   className="text-[#d4d4d4]"
@@ -136,7 +135,7 @@ export function ProgramsResultsSection() {
                     lineHeight: 1.6,
                   }}
                 >
-                  Your annual sales
+                  Annual sales growth potential with full program execution
                 </p>
               </motion.div>
             </div>

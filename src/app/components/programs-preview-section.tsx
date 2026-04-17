@@ -7,63 +7,65 @@ import Group271 from "../../imports/Group271";
 import Group272 from "../../imports/Group272";
 import Group275 from "../../imports/Group275";
 import Group276 from "../../imports/Group276";
+import { useIsMobile } from "./ui/use-mobile";
 
-const programsImg = "https://www.figma.com/api/mcp/asset/b1cfe980-437b-4df9-90fd-03ca2fe852d6";
+const programsImg = "https://www.figma.com/api/mcp/asset/d0283022-0c9f-4a2b-97f0-3bdb7a1a0337";
 
 const programElements = [
   {
     title: "National tobacco program",
-    subtitle: "Altria - RJR",
+    description: "National account access with centralized category management & verified payments",
     icon: Group270,
   },
   {
-    title: "Core-Mark general merchandise program",
-    subtitle: "Coremark",
-    icon: Group271,
-  },
-  {
-    title: "Salty snacks program",
-    subtitle: "Frito-Lay",
-    icon: Group276,
-  },
-  {
     title: "Coffee program",
-    subtitle: "Coremark - FarmersBrother",
+    description: "Preferred pricing, equipment support, & consistent in-store execution",
     icon: Group275,
   },
   {
+    title: "Salty snacks program",
+    description: "Chain-level pricing, rebates, and promotional support",
+    icon: Group276,
+  },
+  {
     title: "Beverage program",
-    subtitle: "Pepsi - CocaCola",
+    description: "On-invoice discounts, rebates, and coordinated promotional execution",
     icon: Group272,
+  },
+  {
+    title: "Core-Mark general merchandise",
+    description: "1% rebate plus access to funded national programs and merchandising opportunities",
+    icon: Group271,
   },
 ];
 
 export function ProgramsPreviewSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-
+  const isMobile = useIsMobile();
   return (
     <section
       ref={sectionRef}
       className="bg-[#FAFAFA]"
-      style={{ fontFamily: "'Inter', sans-serif", padding: "80px 0" }}
+      style={{ fontFamily: "'Inter', sans-serif",  padding: isMobile ? "40px 0" : "80px 0" }}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[80px] flex flex-col gap-[56px]">
         {/* Header */}
         <div className="flex flex-col gap-6">
           <p
-            className="text-[#999] uppercase tracking-[0.12em]"
-            style={{ fontSize: "14px", fontWeight: 500 }}
+            className="text-[#999] uppercase"
+            style={{ fontSize: "14px", fontWeight: 500, letterSpacing: "1.68px" }}
           >
-            Our Program
+            What You Get
           </p>
           <motion.h2
-            className="text-[#111642] max-w-[700px]"
+            className="text-[#111642]"
             style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
+              fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
               fontWeight: 400,
               lineHeight: 1.1,
               letterSpacing: "-0.03em",
+              maxWidth: "578px",
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -74,11 +76,11 @@ export function ProgramsPreviewSection() {
         </div>
 
         {/* Two Column Layout */}
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          {/* Left: Program grid + CTA */}
-          <div className="flex-1 flex flex-col gap-[52px]">
+        <div className="flex flex-col gap-[38px]">
+          <div className="flex flex-col lg:flex-row gap-[56px] items-stretch">
+            {/* Left: Program list */}
             <motion.div
-              className="grid grid-cols-2 gap-x-8 gap-y-[52px]"
+              className="flex-1 flex flex-col gap-[38px]"
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
@@ -88,7 +90,7 @@ export function ProgramsPreviewSection() {
                 return (
                   <motion.div
                     key={element.title}
-                    className="flex gap-3 items-start"
+                    className="flex gap-5 items-start"
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{
@@ -98,22 +100,22 @@ export function ProgramsPreviewSection() {
                     }}
                   >
                     {/* Icon */}
-                    <div className="w-[50px] h-[50px] shrink-0">
+                    <div className="w-[68px] h-[68px] shrink-0">
                       <IconComponent />
                     </div>
                     {/* Text */}
-                    <div className="flex flex-col gap-[6px]" style={{ letterSpacing: "-0.01em" }}>
+                    <div className="flex flex-col gap-[6px]" style={{ letterSpacing: "-0.18px" }}>
                       <h3
                         className="text-[#111642]"
-                        style={{ fontSize: "18px", fontWeight: 500, lineHeight: 1.3 }}
+                        style={{ fontSize: isMobile ? "16px" : "20px", fontWeight: 600, lineHeight: 1.3 }}
                       >
                         {element.title}
                       </h3>
                       <p
                         className="text-[#737373]"
-                        style={{ fontSize: "14px", fontWeight: 400 }}
+                        style={{ fontSize: "15px", fontWeight: 400, lineHeight: 1.5 }}
                       >
-                        {element.subtitle}
+                        {element.description}
                       </p>
                     </div>
                   </motion.div>
@@ -121,36 +123,35 @@ export function ProgramsPreviewSection() {
               })}
             </motion.div>
 
-            {/* CTA Button */}
+            {/* Right: Image — matches height of program list */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+              className="flex-1 w-full md:min-h-[400px] lg:min-h-0 overflow-hidden"
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
             >
-              <Link
-                to="/programs"
-                className="group inline-flex items-center gap-3 border border-[#EA1528] text-[#EA1528] px-[25px] py-[13px] hover:bg-[#EA1528] hover:text-white transition-all"
-                style={{ fontSize: "14px", fontWeight: 500 }}
-              >
-                See Our Program
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <img
+                src={programsImg}
+                alt="Customers shopping in store"
+                className="w-full h-full object-cover"
+              />
             </motion.div>
           </div>
 
-          {/* Right: Image */}
+          {/* CTA Button — below both columns */}
           <motion.div
-            className="flex-1 w-full"
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
           >
-            <img
-              src={programsImg}
-              alt="Convenience store interior"
-              className="w-full object-cover"
-              style={{ height: "320px" }}
-            />
+            <Link
+              to="/programs"
+              className="group inline-flex items-center gap-4 border border-[#EA1528] text-[#EA1528] px-[25px] py-[13px] hover:bg-[#EA1528] hover:text-white transition-all"
+              style={{ fontSize: "14px", fontWeight: 500 }}
+            >
+              Explore the Program
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
           </motion.div>
         </div>
       </div>

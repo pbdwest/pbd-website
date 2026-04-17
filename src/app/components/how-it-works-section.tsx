@@ -1,35 +1,31 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import step1Image from "figma:asset/d53d8c98d92bf4951a4fe6b032e083859b247ad5.png";
 import step2Image from "figma:asset/f854561c8f7679840783f5d293116468ec50da59.png";
 import step3Image from "figma:asset/0f505cce767ac3a8236f5ac06db5845284724c64.png";
-import step4Image from "figma:asset/4fae2e2c85a6d15f382dbd189b9c54bb6a55d10f.png";
+import { useIsMobile } from "./ui/use-mobile";
 
 const steps = [
   {
-    title: "Apply for Membership",
+    title: "Join the Network",
     description:
-      "Independent gas stations, convenience stores, and truck stops apply to join the PBD network.",
+      "Apply and get qualified based on your store, location, and categories",
     image: step1Image,
   },
   {
-    title: "Complete the Jumpstart Program",
+    title: "Program Setup & Implementation",
     description:
-      "PBD performs a store review, resets key categories, and activates vendor programs and funding.",
+      "PBD activates vendor programs, resets key categories, and installs merchandising and signage",
     image: step2Image,
   },
   {
-    title: "Activate Vendor Programs",
+    title: "Start Earning & Growing",
     description:
-      "Your store is connected to PBD National vendor programs to enable on-invoice discounts, promotional funding, and merchandising support.",
+      "Receive monthly rebates while PBD manages programs, performance, and execution",
     image: step3Image,
-  },
-  {
-    title: "Earn Rebates & Grow Sales",
-    description:
-      "Stores receive vendor rebates and promotional funding while PBD continues to support merchandising, pricing, and program execution.",
-    image: step4Image,
   },
 ];
 
@@ -60,17 +56,17 @@ export function HowItWorksSection() {
   // Progress bar: fraction of steps completed
   const progressPercent = (activeStep / (steps.length - 1)) * 100;
   const anchorPercents = steps.map((_, i) => (i / (steps.length - 1)) * 100);
-
+  const isMobile = useIsMobile();
   return (
     // Outer wrapper — tall enough to scroll through all steps (1 step per 100vh)
     <div
       ref={outerRef}
-      className="relative"
-      style={{ height: `${steps.length * 100}vh` }}
+      className="relative h-auto lg:h-[var(--how-it-works-height)]"
+      style={{ ["--how-it-works-height" as string]: `${steps.length * 100}vh` }}
     >
       {/* Sticky inner panel — pins to viewport while user scrolls through outer */}
       <div
-        className="sticky top-0 h-screen overflow-hidden bg-white flex flex-col justify-center"
+        className="relative lg:sticky lg:top-0 min-h-screen lg:h-screen overflow-hidden bg-white flex flex-col justify-center py-12 lg:py-0"
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
         <div className="max-w-[1440px] mx-auto w-full px-6 md:px-10 lg:px-[80px] flex flex-col gap-[56px]">
@@ -81,12 +77,12 @@ export function HowItWorksSection() {
               className="text-[#999] uppercase tracking-[0.15em]"
               style={{ fontSize: "11.2px", fontWeight: 500 }}
             >
-              Our Process
+              How it Works
             </p>
             <motion.h2
               className="text-[#0a0a0a] max-w-[700px]"
               style={{
-                fontSize: "clamp(32px, 4vw, 48px)",
+                fontSize: isMobile ?  "clamp(26px, 3vw, 32px)" : "clamp(32px, 4vw, 48px)",
                 fontWeight: 400,
                 lineHeight: 1.1,
                 letterSpacing: "-0.03em",
@@ -118,19 +114,20 @@ export function HowItWorksSection() {
                       top: `${pct}%`,
                       transform: "translate(-50%, -50%)",
                       backgroundColor: activeStep >= i ? "#111642" : "rgba(17,22,66,0.2)",
+                      opacity: 0
                     }}
                   />
                 ))}
                 {/* Red fill */}
                 <motion.div
-                  className="absolute top-0 left-0 w-full bg-[#ea1528]"
-                  animate={{ height: `${progressPercent}%` }}
+                  className="absolute top-0 left-0 w-full md:bg-[#ea1528] bg-[#ea1528]"
+                  animate={{ height: isMobile ? '100%' : `${progressPercent}%` }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                 />
                 {/* Square indicator */}
                 <motion.div
                   className="absolute"
-                  animate={{ top: `${progressPercent}%` }}
+                  animate={{ top: isMobile ? '0' : `${progressPercent}%` }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                   style={{
                     width: "10px",
@@ -149,7 +146,7 @@ export function HowItWorksSection() {
                   return (
                     <motion.div
                       key={step.title}
-                      animate={{ opacity: isPassed ? 1 : 0.3 }}
+                      animate={{ opacity: isPassed || isMobile ? 1 : 0.3 }}
                       transition={{ duration: 0.4, ease: "easeOut" }}
                     >
                       <div className="mb-1.5">
@@ -213,12 +210,28 @@ export function HowItWorksSection() {
             </div>
 
           </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          >
+            <Link
+              to="/how-it-works"
+              className="group inline-flex items-center gap-4 border border-[#EA1528] text-[#EA1528] px-[25px] py-[13px] hover:bg-[#EA1528] hover:text-white transition-all"
+              style={{ fontSize: "14px", fontWeight: 500 }}
+            >
+              See How It Works
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
         </div>
       </div>
 
       {/* Invisible sentinels — one per step, stacked vertically in the outer wrapper.
           IntersectionObserver fires when each enters the viewport. */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden>
+      <div className="absolute inset-0 pointer-events-none hidden lg:block" aria-hidden>
         {steps.map((_, index) => (
           <div
             key={index}
