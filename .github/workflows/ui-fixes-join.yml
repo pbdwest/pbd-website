@@ -35,3 +35,4 @@ jobs:
         run: |
           aws s3 sync ./dist s3://pbd-marketing-prod-frontend --delete
           aws cloudfront create-invalidation --distribution-id ${{ secrets.PROD_CLOUDFRONT_ID }} --paths "/*"
+          
